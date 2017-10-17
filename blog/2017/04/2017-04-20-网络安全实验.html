@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="安全," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="网络安全实验实验一 本机端口 ：A3">
+<meta name="keywords" content="安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全实验">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/04/2017-04-20-网络安全实验.html">
+<meta property="og:site_name" content="半见&#39;s blog">
+<meta property="og:description" content="网络安全实验实验一 本机端口 ：A3">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://showlinkroom.me/2017/04/14/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BD%9C%E4%B8%9A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84VLAN%E9%85%8D%E7%BD%AE/vlan13.PNG">
+<meta property="og:image" content="http://showlinkroom.me/2017/04/14/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BD%9C%E4%B8%9A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84VLAN%E9%85%8D%E7%BD%AE/vlan15.PNG">
+<meta property="og:updated_time" content="2017-10-17T00:34:35.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全实验">
+<meta name="twitter:description" content="网络安全实验实验一 本机端口 ：A3">
+<meta name="twitter:image" content="http://showlinkroom.me/2017/04/14/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BD%9C%E4%B8%9A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84VLAN%E9%85%8D%E7%BD%AE/vlan13.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/04/2017-04-20-网络安全实验.html"/>
+
+
+
+
+
+  <title>网络安全实验 | 半见's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半见's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/04/2017-04-20-网络安全实验.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bert_cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半见's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">网络安全实验</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T21:37:23+08:00">
+                2017-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/信息安全/" itemprop="url" rel="index">
+                    <span itemprop="name">信息安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="网络安全实验"><a href="#网络安全实验" class="headerlink" title="网络安全实验"></a>网络安全实验</h1><h3 id="实验一"><a href="#实验一" class="headerlink" title="实验一"></a>实验一</h3><ul>
+<li>本机端口 ：A3 </li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>交换机和控制台的连接</p>
+<blockquote>
+<p> 在网络连接属性的地方修改ip地址，然后，因为控制台已经和A24接口相连接了，A1-A8也相连成了一组了，所以只要将A24接口和A8连接后，各个主机就在同一个局域网内了，然后输入<code>telent 192.168.10.104 2000</code>成功进入<code>console</code></p>
+<p>注意: 由于2000端口被同学占用了，我访问的是2003端口，各端口对应 <code>2000 交换机</code> <code>2001 路由器1</code> <code>2002 路由器2</code> <code>2003 防火墙</code>，所以下面我的信息其实是防火墙的信息。 </p>
+</blockquote>
+</li>
+<li><p>检查电源线与交换机的连接</p>
+</li>
+<li>交换机的型号<blockquote>
+<p>H3C SecPath F100-C-G</p>
+</blockquote>
+</li>
+<li><p>交换机的交换端口有哪些类型</p>
+<blockquote>
+<p>百度查询后了解到有3类</p>
+</blockquote>
+<ul>
+<li>Access类型 ：只能属于一个VLAN，一般用于交换机之间的端口</li>
+<li>Trunk类型： 可以允许多个VLAN通过，可以接受和发送多个VLAN的报文，一般用于交换机之间的端口</li>
+<li>Hybrid类型的端口尅允许多个VLAN通过，可以接受和发送多个VLAN的报文，可以用于交换机之间的连接，也可以用于连接用户的计算机</li>
+</ul>
+</li>
+<li>交换机的ISO版本<blockquote>
+<p><code>Conware Software, Version 5.20, Release 5135</code></p>
+</blockquote>
+</li>
+<li><p>交换机的端口信息</p>
+<blockquote>
+<p>信息较多，我只列出一个有ip地址信息的端口</p>
+</blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">interface GigabitEthernet0/0</div><div class="line">port link-mode route</div><div class="line">ip address 192.168.0.1 255.255.255.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>&gt; 然后就是一样的没有ip地址的
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">interface GigabitEthernet0/x</div><div class="line">port link-mode route</div></pre></td></tr></table></figure>
+</code></pre><ul>
+<li><p>交换机Flash的信息</p>
+<blockquote>
+<p><code>512M bytes DDR2 SDRAM Memory</code> </p>
+<p><code>32M bytes Flash Memory</code></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="实验二"><a href="#实验二" class="headerlink" title="实验二"></a>实验二</h3><h4 id="配置一个交换机的VLAN"><a href="#配置一个交换机的VLAN" class="headerlink" title="配置一个交换机的VLAN"></a>配置一个交换机的VLAN</h4><blockquote>
+<p>vlan,用以把物理上直接相连的网络从逻辑上划分为多个子网，每一个vlan对应一个广播域，二层交换机没有路由功能，因此处于不同的VLAN上的主机不能进行通信，只有引入第三层交换技术后VLAN间的通信才成为可能。</p>
+</blockquote>
+<ul>
+<li><p>配置VLAN和VLAN的端口</p>
+  <figure class="highlight cmd"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">system</div><div class="line"></div><div class="line">vlan <span class="number">10</span></div><div class="line">name YM</div><div class="line">description YM Vlan</div><div class="line">port Ethernet <span class="number">1</span>/<span class="number">0</span>/<span class="number">1</span></div><div class="line">port Ethernet <span class="number">1</span>/<span class="number">0</span>/<span class="number">2</span></div><div class="line">qu</div><div class="line">vlan <span class="number">20</span></div><div class="line">name OA</div><div class="line">description OA Vlan</div><div class="line">port Ethernet <span class="number">1</span>/<span class="number">0</span>/<span class="number">3</span></div><div class="line">port Ethernet <span class="number">1</span>/<span class="number">0</span>/<span class="number">4</span></div><div class="line">qu</div><div class="line"></div><div class="line">interface vlan-interface <span class="number">20</span></div><div class="line">description YM gateway</div><div class="line">ip address <span class="number">172</span>.<span class="number">16</span>.<span class="number">2</span>.<span class="number">254</span> <span class="number">24</span></div><div class="line">qu</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置PC</p>
+<blockquote>
+<p>控制台将网络划分成了两个虚拟的网络块vlan1和vlan2，这次实验中，主机的IP划分为172.16.1.0，所以只要将自己的PC的IP地址配置为172.16.1.XXX，然后当前PC就处于vlan1了，此时处于vlan1中的PC就可以互相ping。</p>
+<p>ping 关系,下面给出一个ping信息示例</p>
+</blockquote>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Ping statustucs <span class="keyword">for</span> 172.16.1.166:</div><div class="line">    Packets: Snet = 4, Received = 3, Lost = 1 (25% loss),</div><div class="line">Approximate round trip <span class="built_in">times</span> <span class="keyword">in</span> milli-seconds：</div><div class="line">    Minimum = 0ms, Maximum = 664ms, Average = 221ms</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="配置两个交换机的VLAN"><a href="#配置两个交换机的VLAN" class="headerlink" title="配置两个交换机的VLAN"></a>配置两个交换机的VLAN</h4><p>这一部分主要是想把两个不同交换机内的主机划分在一个VLAN内</p>
+<p><img src="http://showlinkroom.me/2017/04/14/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BD%9C%E4%B8%9A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84VLAN%E9%85%8D%E7%BD%AE/vlan13.PNG" alt="image"></p>
+<ul>
+<li>先配置VLAN与VLAN端口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">[H3C-S1]: </div><div class="line">vlan 10 </div><div class="line">port Ethernet 1/0/1 </div><div class="line">// valn10中分配一个端口</div><div class="line">qu </div><div class="line">vlan 20 </div><div class="line">port Ethernet 1/0/2 </div><div class="line">port Ethernet 1/0/3 </div><div class="line">// vlan20中分配两个端口</div><div class="line">qu </div><div class="line">interface vlan-interface 10 </div><div class="line">ip address 172.16.1.254 24 </div><div class="line">// 设置vlan10的网关ip</div><div class="line">qu </div><div class="line">interface vlan-interface 20 </div><div class="line">ip address 172.16.2.254 24 </div><div class="line">// 设置vlan20的网关ip</div><div class="line">qu </div><div class="line">interface loopback0 </div><div class="line">ip address 172.16.3.1 24 </div><div class="line">qu </div><div class="line">Route id 172.16.3.1 </div><div class="line">ospf 1 </div><div class="line">area 0 </div><div class="line">network 172.16.1.254 0.0.0.255 </div><div class="line">network 172.16.2.254 0.0.0.255 </div><div class="line">network 172.16.3.1 0.0.0.255 </div><div class="line">qu </div><div class="line">[H3C-S2]: </div><div class="line">vlan 20 </div><div class="line">port Ethernet 1/0/1 </div><div class="line">port Ethernet 1/0/2 </div><div class="line">port Ethernet 1/0/3 </div><div class="line">// vlan20分配3个端口</div><div class="line">qu </div><div class="line">interface vlan-interface 20 </div><div class="line">ip address 172.16.2.254 24 </div><div class="line">// 设置vlan20的网关ip 和上面的vlan20一样</div><div class="line">qu </div><div class="line">ospf 1 </div><div class="line">area 0 </div><div class="line">network 172.16.2.254 0.0.0.255 </div><div class="line">qu</div></pre></td></tr></table></figure>
+<ul>
+<li>然后配置PC</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">配置 PC1：ip address:172.16.1.1/24 默认网关：172.16.1.254 </div><div class="line">配置 PC2：ip address:172.16.2.2/24 默认网关：172.16.2.254 </div><div class="line">配置 PC3：ip address:172.16.2.3/24 默认网关：172.16.2.254 </div><div class="line">配置 PC4：ip address:172.16.2.4/24 默认网关：172.16.2.254</div></pre></td></tr></table></figure>
+<p>然后就将主机1分配到了vlan10中，而主机2、3、4全部都在vlan20中，实现了不同switch间的通信</p>
+<ul>
+<li>关于ping信息<ul>
+<li>由于实验已经结束了，所以并没有记录到这一部分的ping信息，遗憾。</li>
+</ul>
+</li>
+</ul>
+<h4 id="更加复杂的配置"><a href="#更加复杂的配置" class="headerlink" title="更加复杂的配置"></a>更加复杂的配置</h4><p>这次的配置目标是想让同switch的主机间不能通信，而跨switch中的指定两个主机却能通信，目标图可以如下：</p>
+<p><img src="http://showlinkroom.me/2017/04/14/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%A4%A7%E4%BD%9C%E4%B8%9A3-%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84VLAN%E9%85%8D%E7%BD%AE/vlan15.PNG" alt="image"></p>
+<ul>
+<li>先配置VLAN和VLAN的端口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line">[H3C-S1]： </div><div class="line">vlan 10 </div><div class="line">vlan 20  </div><div class="line">// 在一个switch上创建两个vlan</div><div class="line">qu </div><div class="line">interface Ethernet 1/0/1 </div><div class="line">port link-type access </div><div class="line">port access vlan 10 </div><div class="line">// 给vlan10分配端口1，端口连接方式为acess</div><div class="line">qu </div><div class="line">interface Ethernet 1/0/2 </div><div class="line">port link-type access </div><div class="line">port access vlan 20 </div><div class="line">qu </div><div class="line">// 给vlan20分配端口2，端口连接方式为acess</div><div class="line">interface Ethernet 1/0/3 </div><div class="line">port link-type trunk </div><div class="line">port trunk permit vlan 10 20 </div><div class="line">port trunk pvid vlan 10 </div><div class="line">// 对于端口3 ，连接方式为trunk，同时指定vlan10与vlan20都能通过端口3，设置端口的默认vlan为vlan10</div><div class="line">interface vlan-interface 10 </div><div class="line">ip address 172.16.1.254 24 </div><div class="line">qu </div><div class="line">// 设置vlan10的默认网关</div><div class="line">interface vlan-interface 20 </div><div class="line">ip address 172.16.2.254 24 </div><div class="line">qu </div><div class="line">// 设置vlan20的默认网关</div><div class="line"></div><div class="line">// 交换机2的配置与1几乎一样就不做详细解释了</div><div class="line">[H3C-S2]: </div><div class="line">vlan 10 </div><div class="line">vlan 20  </div><div class="line">qu </div><div class="line">interface Ethernet 1/0/1 </div><div class="line">port link-type access </div><div class="line">port access vlan 10 </div><div class="line">qu </div><div class="line">interface Ethernet 1/0/2 </div><div class="line">port link-type access </div><div class="line">port access vlan 20 </div><div class="line">qu </div><div class="line">interface Ethernet 1/0/3 </div><div class="line">port link-type trunk </div><div class="line">port trunk permit vlan 10 20 </div><div class="line">port trunk pvid vlan 10 </div><div class="line">interface vlan-interface 10 </div><div class="line">ip address 172.16.1.254 24 </div><div class="line">qu </div><div class="line">interface vlan-interface 20 </div><div class="line">ip address 172.16.2.254 24 </div><div class="line">qu</div></pre></td></tr></table></figure>
+<ul>
+<li>配置PC<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">配置 PC1：ip address:172.16.1.1/24 默认网关：172.16.1.254 </div><div class="line">配置 PC2：ip address:172.16.2.2/24 默认网关：172.16.2.254 </div><div class="line">配置 PC3：ip address:172.16.1.3/24 默认网关：172.16.1.254 </div><div class="line">配置 PC4：ip address:172.16.2.4/24 默认网关：172.16.2.254</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样就将pc1和pc3分配在了vlan10下，将pc2和pc4分配再来vlan20下，pc1和3能进行数据互通，pc2与4能进行数据互通，而在不同vlan下的pc并不能进行数据互通。</p>
+<p>而端口3就是用来接收传递不同switch间的数据的，数据从端口3发出，在另一台switch接收，然后进行检验决定数据包传输还是丢弃。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/安全/" rel="tag"># 安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/04/2017-04-19-fetch简要学习笔记.html" rel="next" title="fetch简要学习笔记">
+                <i class="fa fa-chevron-left"></i> fetch简要学习笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/05/2017-05-11-JS的不变性.html" rel="prev" title="Js的不变性">
+                Js的不变性 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg"
+                alt="bert_cai" />
+            
+              <p class="site-author-name" itemprop="name">bert_cai</p>
+              <p class="site-description motion-element" itemprop="description">web学习者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bertcai" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="bert_cai@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.stdioa.com/" title="StdioA" target="_blank">StdioA</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络安全实验"><span class="nav-number">1.</span> <span class="nav-text">网络安全实验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验一"><span class="nav-number">1.0.1.</span> <span class="nav-text">实验一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实验二"><span class="nav-number">1.0.2.</span> <span class="nav-text">实验二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置一个交换机的VLAN"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">配置一个交换机的VLAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置两个交换机的VLAN"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">配置两个交换机的VLAN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更加复杂的配置"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">更加复杂的配置</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bert_cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

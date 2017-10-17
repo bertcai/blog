@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="DOM操作小结,接上篇。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM操作小结">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/04/2017-04-11-DOM操作小结.html">
+<meta property="og:site_name" content="半见&#39;s blog">
+<meta property="og:description" content="DOM操作小结,接上篇。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-04-11T04:45:07.872Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM操作小结">
+<meta name="twitter:description" content="DOM操作小结,接上篇。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/04/2017-04-11-DOM操作小结.html"/>
+
+
+
+
+
+  <title>DOM操作小结 | 半见's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半见's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/04/2017-04-11-DOM操作小结.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bert_cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半见's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DOM操作小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T12:40:12+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>DOM操作小结,接上篇。<br><a id="more"></a></p>
+<h3 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h3><p>DOM操作步骤有以下几点：</p>
+<ul>
+<li><p>更新：更新该DOM节点的内容，相当于更新了该DOM节点表示的HTML的内容；</p>
+</li>
+<li><p>遍历：遍历该DOM节点下的子节点，以便进行进一步操作；</p>
+</li>
+<li>添加：在该DOM节点下新增一个子节点，相当于动态增加了一个HTML节点；</li>
+<li>删除：将该节点从HTML中删除，相当于删掉了该DOM节点的内容以及它包含的所有子节点。</li>
+</ul>
+<p>选择DOM节点有两种方式</p>
+<ul>
+<li>方式1<ul>
+<li>document.getElementById()</li>
+<li>document.getElementsByTagName()</li>
+<li>document.getElementsByClassName()</li>
+<li>…</li>
+</ul>
+</li>
+<li>方式2<ul>
+<li>doucument.querySelector()</li>
+<li>doucument.querySelectorALL()</li>
+</ul>
+</li>
+</ul>
+<p>eg.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过querySelector获取ID为q1的节点：</span></div><div class="line"><span class="keyword">var</span> q1 = <span class="built_in">document</span>.querySelector(<span class="string">'#q1'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 通过querySelectorAll获取q1节点内的符合条件的所有节点：</span></div><div class="line"><span class="keyword">var</span> ps = q1.querySelectorAll(<span class="string">'div.highlighted &gt; p'</span>);</div></pre></td></tr></table></figure>
+<h3 id="更新DOM"><a href="#更新DOM" class="headerlink" title="更新DOM"></a>更新DOM</h3><p>有两种方式</p>
+<ul>
+<li>innerHtml，注意该方式直接修改Html片段，所以要注意XSS攻击。</li>
+<li>innerText/textContent，可以直接修改标签的文本，两者区别，前者不返回隐藏元素文本，后者返回所有文本。</li>
+</ul>
+<p>修改CSS </p>
+<ul>
+<li>style<ul>
+<li>color</li>
+<li>padding</li>
+<li>…等css属性</li>
+<li>fontSize<blockquote>
+<p>（要注意，像<code>font-size</code>这种名称在CSS中是合法的但是在JavaScript中并不是有效的属性名，所以应改写驼峰命名方式<code>fontSize</code>。）</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="插入DOM"><a href="#插入DOM" class="headerlink" title="插入DOM"></a>插入DOM</h3><h4 id="appendChild"><a href="#appendChild" class="headerlink" title="appendChild()"></a>appendChild()</h4><p>把一个子节点添加到父节点的最后一个子节点，可以把已知的节点直接添加，效果和改变子节点位置到最后一个字节点类似。</p>
+<p>对于新的节点，有以下例子<br>eg.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//html</span></div><div class="line">&lt;div id=<span class="string">"list"</span>&gt;</div><div class="line">    &lt;p id=<span class="string">"java"</span>&gt;Java&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="python"&gt;Python&lt;/</span>p&gt;</div><div class="line">    &lt;p id=<span class="string">"scheme"</span>&gt;Scheme&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>div&gt;</div><div class="line"></div><div class="line"><span class="comment">//js</span></div><div class="line"><span class="keyword">var</span></div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'list'</span>),</div><div class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">haskell.id = <span class="string">'haskell'</span>;</div><div class="line">haskell.innerText = <span class="string">'Haskell'</span>;</div><div class="line">list.appendChild(haskell);</div><div class="line"></div><div class="line"><span class="comment">//new html</span></div><div class="line">&lt;div id=<span class="string">"list"</span>&gt;</div><div class="line">    &lt;p id=<span class="string">"java"</span>&gt;Java&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="python"&gt;Python&lt;/</span>p&gt;</div><div class="line">    &lt;p id=<span class="string">"scheme"</span>&gt;Scheme&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="haskell"&gt;Haskell&lt;/</span>p&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="insertBefore"><a href="#insertBefore" class="headerlink" title="insertBefore"></a>insertBefore</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//函数原型</span></div><div class="line">parentElement.insertBefore(newElement, referenceElement);</div><div class="line"></div><div class="line"><span class="comment">//子节点会插入到referenceElement之前</span></div></pre></td></tr></table></figure>
+<p>对于给定Html结构，给出下例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//html</span></div><div class="line">&lt;div id=<span class="string">"list"</span>&gt;</div><div class="line">    &lt;p id=<span class="string">"java"</span>&gt;Java&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="python"&gt;Python&lt;/</span>p&gt;</div><div class="line">    &lt;p id=<span class="string">"scheme"</span>&gt;Scheme&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>div&gt;</div><div class="line"></div><div class="line"><span class="comment">//js</span></div><div class="line"><span class="keyword">var</span></div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'list'</span>),</div><div class="line">    ref = <span class="built_in">document</span>.getElementById(<span class="string">'python'</span>),</div><div class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">haskell.id = <span class="string">'haskell'</span>;</div><div class="line">haskell.innerText = <span class="string">'Haskell'</span>;</div><div class="line">list.insertBefore(haskell, ref);</div><div class="line"></div><div class="line"><span class="comment">// new html</span></div><div class="line">&lt;div id=<span class="string">"list"</span>&gt;</div><div class="line">    &lt;p id=<span class="string">"java"</span>&gt;Java&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="haskell"&gt;Haskell&lt;/</span>p&gt;</div><div class="line">    &lt;p id=<span class="string">"python"</span>&gt;Python&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p id="scheme"&gt;Scheme&lt;/</span>p&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div></pre></td></tr></table></figure>
+<p>上面这个例子，就是将<code>Haskell</code>节点插入到<code>Python</code>节点之前。</p>
+<h3 id="删除DOM"><a href="#删除DOM" class="headerlink" title="删除DOM"></a>删除DOM</h3><p>删除比较简单，只需要通过调用父节点的<code>removeChild()</code>方法即可。</p>
+<blockquote>
+<p>注意到删除后的节点虽然不在文档树中了，但其实它还在内存中，可以随时再次被添加到别的位置。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//html</span></div><div class="line">&lt;div id=<span class="string">"parent"</span>&gt;</div><div class="line">    &lt;p&gt;First&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">    &lt;p&gt;Second&lt;/</span>p&gt;</div><div class="line">&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">/</span><span class="regexp">/javascript</span></div><div class="line"><span class="regexp">var parent = document.getElementById('parent');</span></div><div class="line"><span class="regexp">parent.removeChild(parent.children[0]);</span></div><div class="line"><span class="regexp">parent.removeChild(parent.children[1]); /</span><span class="regexp">/ &lt;-- 浏览器报错</span></div></pre></td></tr></table></figure>
+<p>浏览器报错：<code>parent.children[1]</code>不是一个有效的节点。原因就在于，当<code>&lt;p&gt;First&lt;/p&gt;</code>节点被删除后，<code>parent.children</code>的节点数量已经从2变为了1，索引<code>[1]</code>已经不存在了。</p>
+<h3 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank" rel="external">JavaScript | MDN</a></p>
+<p><a href="http://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434499851683f7f8d6b7717343248a75d5e7f930def4000" target="_blank" rel="external">操作DOM - 廖雪峰的官方网站</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/04/2017-04-11-浏览器对象简简记.html" rel="next" title="浏览器对象简简记">
+                <i class="fa fa-chevron-left"></i> 浏览器对象简简记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/04/2017-04-19-fetch简要学习笔记.html" rel="prev" title="fetch简要学习笔记">
+                fetch简要学习笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg"
+                alt="bert_cai" />
+            
+              <p class="site-author-name" itemprop="name">bert_cai</p>
+              <p class="site-description motion-element" itemprop="description">web学习者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bertcai" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="bert_cai@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.stdioa.com/" title="StdioA" target="_blank">StdioA</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作DOM"><span class="nav-number">1.</span> <span class="nav-text">操作DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新DOM"><span class="nav-number">2.</span> <span class="nav-text">更新DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入DOM"><span class="nav-number">3.</span> <span class="nav-text">插入DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#appendChild"><span class="nav-number">3.1.</span> <span class="nav-text">appendChild()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#insertBefore"><span class="nav-number">3.2.</span> <span class="nav-text">insertBefore</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除DOM"><span class="nav-number">4.</span> <span class="nav-text">删除DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考网站"><span class="nav-number">5.</span> <span class="nav-text">参考网站</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bert_cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
