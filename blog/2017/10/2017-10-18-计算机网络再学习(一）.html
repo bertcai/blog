@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引子最近再学习web相关的知识的时候，浏览各种关于网络的知识，深深的无力感让我突然感叹当初网络课程所学甚浅，所以重开这个学习计划，记录自己对计算机网络的相关知识学习，所用的课本是《计算机网络-自定向下方法》. 废话就先说到这吧，直接开始第一章的学习T_T。">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络再学习（一）">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/10/2017-10-18-计算机网络再学习(一）.html">
+<meta property="og:site_name" content="半见&#39;s blog">
+<meta property="og:description" content="引子最近再学习web相关的知识的时候，浏览各种关于网络的知识，深深的无力感让我突然感叹当初网络课程所学甚浅，所以重开这个学习计划，记录自己对计算机网络的相关知识学习，所用的课本是《计算机网络-自定向下方法》. 废话就先说到这吧，直接开始第一章的学习T_T。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-18T07:09:32.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络再学习（一）">
+<meta name="twitter:description" content="引子最近再学习web相关的知识的时候，浏览各种关于网络的知识，深深的无力感让我突然感叹当初网络课程所学甚浅，所以重开这个学习计划，记录自己对计算机网络的相关知识学习，所用的课本是《计算机网络-自定向下方法》. 废话就先说到这吧，直接开始第一章的学习T_T。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/10/2017-10-18-计算机网络再学习(一）.html"/>
+
+
+
+
+
+  <title>计算机网络再学习（一） | 半见's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半见's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/10/2017-10-18-计算机网络再学习(一）.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bert_cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半见's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络再学习（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-18T15:00:40+08:00">
+                2017-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>最近再学习web相关的知识的时候，浏览各种关于网络的知识，深深的无力感让我突然感叹当初网络课程所学甚浅，所以重开这个学习计划，记录自己对计算机网络的相关知识学习，所用的课本是<a href="https://book.douban.com/subject/26176870/" target="_blank" rel="external">《计算机网络-自定向下方法》</a>.</p>
+<p>废话就先说到这吧，直接开始第一章的学习T_T。</p>
+<a id="more"></a>
+<h2 id="计算机网络和因特网"><a href="#计算机网络和因特网" class="headerlink" title="计算机网络和因特网"></a>计算机网络和因特网</h2><h3 id="因特网"><a href="#因特网" class="headerlink" title="因特网"></a>因特网</h3><p>因特网是一个世界范围内的计算机网络，它连接了世界上数以十亿计的终端设备，称为<strong>端系统</strong>。<br>而端系统通过<strong>通信链路</strong>和<strong>分组交换机</strong>连接到一起。</p>
+<p>因特网也是一个为应用程序提供服务的基础设施，这些应用程序被称为<strong>分布式应用程序</strong>，因为它们涉及多台相互交换数据的端系统。</p>
+<p>因特网为这些端系统提供了一个<strong>应用程序编程接口</strong>，也就是我们常说的<strong>API</strong>，API规定了软件请求交互数据的方式，同时提供了许多相关的因特网服务。</p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><h4 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h4><p>假设正在上课，老师突然停下来问：有人有什么问题吗（<em>发送了一个报文</em>，<em>报文被所有正在听课的人接受到了</em>），你举起了手（<em>向老师回了一个报文</em>），老师马上面带微笑示意你：请讲（<em>老师向你发送报文</em>，<em>鼓励你问</em>），你提出了问题（<em>向老师传输了报文</em>），老师听取问题（<em>接受了你的报文</em>），解答了你的疑惑（<em>向你传输回答报文</em>）。<br>这个例子中报文的发送和接收吗还有采取的约定俗成的动作，就是这个“提问与回答”协议的核心。</p>
+<h4 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h4><p>一个<strong>协议</strong>定义了在两个或多个通信实体之间交换报文的格式和次序，以及报文发送和/或接受一条报文或其他事件所采取的动作。</p>
+<h3 id="网络边缘"><a href="#网络边缘" class="headerlink" title="网络边缘"></a>网络边缘</h3><h4 id="接入方式"><a href="#接入方式" class="headerlink" title="接入方式"></a>接入方式</h4><p>书上在这一章讲的接入方式能有些已经过时了，但是我相信大家应该都是使用过的</p>
+<ul>
+<li>第一种是DSL 电缆 FTTH 拨号和卫星<ul>
+<li>DSL（数字用户线）就是用户通过本地电话接入本地电话公司获取DSL因特网接入，它在使用现有电话显得时候通过频分复用技术，可以同时上网和通话，将数据和电话信号编码为不同的频率，使得一根线路看起来有多条线路</li>
+<li>电缆使用的是有限电视的服务，通过电缆调制解调器，家庭pc可以访问到网络，但是这种方式有问题，每个枢纽通常支持一个地区的家庭用户，当某个或多个用户同时通过下行信道下载东西时，其他用户的速率可能会很慢</li>
+<li>ftth就是光纤到户，一个或结果家庭公用一条光纤路径，速度很快</li>
+<li>拨号和卫星，速度非常慢，令人痛苦，小学时我家就是这种，下个200m的文件要几个小时。</li>
+</ul>
+</li>
+<li>第二种就是LAN网和WiFi<ul>
+<li>LAN就是我们现在常用的上网方式了，它通过以太交换机以100mbps的速率将用户接入到一个服务器上，这个服务器可能有1Gbps或10Gbps的接入速率，大学网络，小区网络大多是这种方式</li>
+<li>WiFi大家都很熟悉，无线网络。</li>
+</ul>
+</li>
+<li>第三种就是移动网络，广域无线接入<ul>
+<li>3G </li>
+<li>4G</li>
+<li>待发展的5G</li>
+</ul>
+</li>
+</ul>
+<h4 id="物理媒体"><a href="#物理媒体" class="headerlink" title="物理媒体"></a>物理媒体</h4><ul>
+<li>导引型媒体<ul>
+<li>电波沿着固体媒体前行，如双绞线</li>
+</ul>
+</li>
+<li>非导引型媒体<ul>
+<li>电波在空气或外层空间中传播，如无线局域网，数字卫星。</li>
+</ul>
+</li>
+</ul>
+<h3 id="网络核心"><a href="#网络核心" class="headerlink" title="网络核心"></a>网络核心</h3><h4 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h4><p>为了从源端项目地端发送一个报文，源将报文划分为较小的数据库，称为分组。</p>
+<ul>
+<li>存储转发传输<ul>
+<li>大部分分组交换机采用这种转发方式，交换机在从开始向输出链路传输该分组的第一个比特之前，必须接受到整个分组才进行传输。</li>
+</ul>
+</li>
+<li>排队延时和分组丢失<ul>
+<li>每个分组交换机有多条链路与之相连接，对于每条相连接的链路，交换机都有一个输出缓存，当待发送链路正在工作的时候，该分组就在输出缓存中等待，这个等待过程就是排队延时。而缓存大小是有限的，极端情况下缓存已经装满了还没等到链路空闲，就会出现丢包现象，即分组丢失。</li>
+</ul>
+</li>
+<li>转发表和路由选择协议<ul>
+<li>源在向目的端发送一个分组的时候，分组的首部包含了目标IP地址，所以当分组到达路由器时，路由器通过自己的转发表与分组的目的地址进行搜索，将分组发送到某个正确链路，或者相邻路由器。</li>
+<li>转发表的设置基于特殊的路由选择协议，后面会详细展开。</li>
+</ul>
+</li>
+</ul>
+<h4 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h4><p>电路交换网络中，在端系统间通信的会话期间，预留了端系统间通信沿路径所需要的资源。</p>
+<ul>
+<li>频分复用技术FDM</li>
+<li>时分复用技术TDM</li>
+</ul>
+<h4 id="两种交换方式的对比"><a href="#两种交换方式的对比" class="headerlink" title="两种交换方式的对比"></a>两种交换方式的对比</h4><p>分组交换方式考虑用户需求，根据交换需求分配链路，而电路交换将资源预先分配，使得有时候已分配而并不需要的链路时间未被利用，而需要利用的用户资源不够，速度慢。</p>
+<h4 id="网络的网络"><a href="#网络的网络" class="headerlink" title="网络的网络"></a>网络的网络</h4><p>书上有一个生动的例子，如果我们全世界的网络都是连接到一个网络供应商（ISP）上，那么我们都需要向该ISP付费，必然有其他人不愿意这种垄断地位，那么就出现了其他的ISP，而如果各个ISP不互相通，必然就没有了竞争力，所以各个ISP会协商互通，依次内推，最后形成了今天的网咯格局，也就是网络的网络。</p>
+<p>由十多个第一层ISP和数十万个较低层ISP组成，各个ISP覆盖区域不同，较低层的与较高层的相连，较高层的彼此互联，用户之间形成了网络，网络之间又形成了网络。</p>
+<h3 id="分组交换网的时延、丢包与吞吐量"><a href="#分组交换网的时延、丢包与吞吐量" class="headerlink" title="分组交换网的时延、丢包与吞吐量"></a>分组交换网的时延、丢包与吞吐量</h3><h4 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h4><p>分组从一个结点沿着路径经受了几种不同类型的时延，主要有：</p>
+<ul>
+<li>结点处理时延<ul>
+<li>检查分组首部和决定将该分组导向何处所需要的时间就是处理时延主要部分。其他例如检验差错等也能造成处理时延</li>
+</ul>
+</li>
+<li>排队时延<ul>
+<li>上面讲了，当分组在链路前等待传输时，受到排队时延</li>
+</ul>
+</li>
+<li>传输时延<ul>
+<li>假定分组一先来先服务的方式传输，仅当所有已经到达的分组被传输后才能传输刚到达的分组，这就是传输时延</li>
+</ul>
+</li>
+<li>传播时延<ul>
+<li>一旦一个比特被推向链路，该比特需要向路由器传播，从该链路的起点导路由器B传播所需要的时间就是传播时延</li>
+</ul>
+</li>
+<li>传输时延与传播时延的区别<ul>
+<li>前者是路由器将分组推出所需要的花时间，与分组长度和链路传输速率有关，与两路由器距离无关</li>
+<li>后者是一个比特从一个路由器导另一个路由器所需要的时间，与两路由器距离有关，与分组长度或链路传输速率无关</li>
+</ul>
+</li>
+</ul>
+<h4 id="排队时延与丢包"><a href="#排队时延与丢包" class="headerlink" title="排队时延与丢包"></a>排队时延与丢包</h4><ul>
+<li>排队时延和流量强度有很大关系，流量强度超过1，则排队时延会趋向于无穷大。</li>
+<li>丢包上面也简要提过，就是缓存队列满了，新到来的分组没有地方存储，被路由器抛弃了。</li>
+</ul>
+<h4 id="计算机网络的吞吐量"><a href="#计算机网络的吞吐量" class="headerlink" title="计算机网络的吞吐量"></a>计算机网络的吞吐量</h4><p>吞吐量取决于数据流过链路的传输速率，当没有其他干扰流量时，其吞吐量能够近似为沿着源和目的地之间路径的最小传输速率。</p>
+<p>但是当干扰流量很明显的时候，即很多其他数据流也沿着这条链路流动时，一条具有高传输速率的链路仍然可能成为文件传输的瓶颈链路。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>今天看到了书1.1-1.4章节，感觉对计算机网络有了更多的理解，印象最深的可能就是丢包的概念，终于知道了网络延时所造成的丢包的原因，以及分组交换时丢包的过程，收获挺多的(*\^_\^*).</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/05/2017-05-25-关于Vue 计算属性的理解.html" rel="next" title="关于Vue计算属性的理解">
+                <i class="fa fa-chevron-left"></i> 关于Vue计算属性的理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg"
+                alt="bert_cai" />
+            
+              <p class="site-author-name" itemprop="name">bert_cai</p>
+              <p class="site-description motion-element" itemprop="description">web学习者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bertcai" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="bert_cai@163.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.stdioa.com/" title="StdioA" target="_blank">StdioA</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络和因特网"><span class="nav-number">2.</span> <span class="nav-text">计算机网络和因特网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网"><span class="nav-number">2.1.</span> <span class="nav-text">因特网</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#协议"><span class="nav-number">2.2.</span> <span class="nav-text">协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一个例子"><span class="nav-number">2.2.1.</span> <span class="nav-text">一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络协议"><span class="nav-number">2.2.2.</span> <span class="nav-text">网络协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络边缘"><span class="nav-number">2.3.</span> <span class="nav-text">网络边缘</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接入方式"><span class="nav-number">2.3.1.</span> <span class="nav-text">接入方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物理媒体"><span class="nav-number">2.3.2.</span> <span class="nav-text">物理媒体</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络核心"><span class="nav-number">2.4.</span> <span class="nav-text">网络核心</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分组交换"><span class="nav-number">2.4.1.</span> <span class="nav-text">分组交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#电路交换"><span class="nav-number">2.4.2.</span> <span class="nav-text">电路交换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种交换方式的对比"><span class="nav-number">2.4.3.</span> <span class="nav-text">两种交换方式的对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网络的网络"><span class="nav-number">2.4.4.</span> <span class="nav-text">网络的网络</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分组交换网的时延、丢包与吞吐量"><span class="nav-number">2.5.</span> <span class="nav-text">分组交换网的时延、丢包与吞吐量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时延"><span class="nav-number">2.5.1.</span> <span class="nav-text">时延</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排队时延与丢包"><span class="nav-number">2.5.2.</span> <span class="nav-text">排队时延与丢包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机网络的吞吐量"><span class="nav-number">2.5.3.</span> <span class="nav-text">计算机网络的吞吐量</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bert_cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
