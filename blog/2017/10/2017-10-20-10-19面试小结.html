@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,fetch," />
+  <meta name="keywords" content="面试,计算机基础," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="引子前端技术迭代非常快，新的技术日益涌现，最近，使用fetch（）进行ajax操作的项目越来越多，所以写了这篇fetch的小简析，既作为个人笔记，也作为一篇小的分享。">
-<meta name="keywords" content="JavaScript,fetch">
+<meta name="description" content="引子10月19的参加了两场面试，上午面试只有一轮技术面，下午的有两面，一轮技术、一轮HR，面试中其实遇到了好多以前所不了解的问题，现在回想起来，也是基础不牢所导致的，今天吧这些面试问题记录下来，自勉T_T。">
+<meta name="keywords" content="面试,计算机基础">
 <meta property="og:type" content="article">
-<meta property="og:title" content="fetch简要学习笔记">
-<meta property="og:url" content="http://www.moecai.com/blog/2017/04/2017-04-19-fetch简要学习笔记.html">
+<meta property="og:title" content="10-19面试小结">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/10/2017-10-20-10-19面试小结.html">
 <meta property="og:site_name" content="半见&#39;s blog">
-<meta property="og:description" content="引子前端技术迭代非常快，新的技术日益涌现，最近，使用fetch（）进行ajax操作的项目越来越多，所以写了这篇fetch的小简析，既作为个人笔记，也作为一篇小的分享。">
+<meta property="og:description" content="引子10月19的参加了两场面试，上午面试只有一轮技术面，下午的有两面，一轮技术、一轮HR，面试中其实遇到了好多以前所不了解的问题，现在回想起来，也是基础不牢所导致的，今天吧这些面试问题记录下来，自勉T_T。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-04-19T14:33:06.406Z">
+<meta property="og:updated_time" content="2017-10-20T01:09:17.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fetch简要学习笔记">
-<meta name="twitter:description" content="引子前端技术迭代非常快，新的技术日益涌现，最近，使用fetch（）进行ajax操作的项目越来越多，所以写了这篇fetch的小简析，既作为个人笔记，也作为一篇小的分享。">
+<meta name="twitter:title" content="10-19面试小结">
+<meta name="twitter:description" content="引子10月19的参加了两场面试，上午面试只有一轮技术面，下午的有两面，一轮技术、一轮HR，面试中其实遇到了好多以前所不了解的问题，现在回想起来，也是基础不牢所导致的，今天吧这些面试问题记录下来，自勉T_T。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.moecai.com/blog/2017/04/2017-04-19-fetch简要学习笔记.html"/>
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/10/2017-10-20-10-19面试小结.html"/>
 
 
 
 
 
-  <title>fetch简要学习笔记 | 半见's blog</title>
+  <title>10-19面试小结 | 半见's blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/04/2017-04-19-fetch简要学习笔记.html">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/10/2017-10-20-10-19面试小结.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bert_cai">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">fetch简要学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">10-19面试小结</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-19T22:28:53+08:00">
-                2017-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T09:08:59+08:00">
+                2017-10-20
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
                   </a>
                 </span>
 
@@ -352,52 +352,68 @@
       
 
       
-        <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>前端技术迭代非常快，新的技术日益涌现，最近，使用fetch（）进行ajax操作的项目越来越多，所以写了这篇fetch的小简析，既作为个人笔记，也作为一篇小的分享。<br><a id="more"></a></p>
-<h3 id="fetch概念"><a href="#fetch概念" class="headerlink" title="fetch概念"></a>fetch概念</h3><p><code>Fetch API</code>  提供了一个 <code>JavaScript</code>接口，用于访问和操纵<code>HTTP</code>管道的部分，例如请求和响应。它还提供了一个全局 <code>fetch()</code>方法，该方法提供了一种简单，合乎逻辑的方式来跨网络异步获取资源</p>
-<h3 id="fetch原型"><a href="#fetch原型" class="headerlink" title="fetch原型"></a>fetch原型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Promise</span>&lt;Response&gt; fetch(input[, init]);</div></pre></td></tr></table></figure>
-<p>输入一个url参数和可选的配置参数，返回一个<code>Promise</code>对象。</p>
-<h3 id="一个简单的fetch实例"><a href="#一个简单的fetch实例" class="headerlink" title="一个简单的fetch实例"></a>一个简单的fetch实例</h3><p>下面给出一个实例，假设我们需要获取一个<code>json</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fetch(<span class="string">'/users.json'</span>)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">response</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> response.json()</div><div class="line">    &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'parsed json'</span>, json)</div><div class="line">    &#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">ex</span>)</span>&#123;</div><div class="line">        consloe.log(<span class="string">'parsing failed'</span>, ex)</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<p>上面这个就是一个简单实例，我们从<code>user.json</code>文件中获取<code>json</code>数据，通过<code>response</code>的<code>json()</code>方法解析json数据，然后在<code>console</code>中输出。这里我们的<code>option</code>使用了默认值，下面我们详细的讲一下<code>option</code> 与 <code>response</code>的各种方法与属性。</p>
-<h3 id="fetch-的-option"><a href="#fetch-的-option" class="headerlink" title="fetch 的 option"></a>fetch 的 option</h3><p><code>fetch</code>的第二个参数<code>option</code>有多项设置</p>
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>10月19的参加了两场面试，上午面试只有一轮技术面，下午的有两面，一轮技术、一轮HR，面试中其实遇到了好多以前所不了解的问题，现在回想起来，也是基础不牢所导致的，今天吧这些面试问题记录下来，自勉T_T。</p>
+<a id="more"></a>
+<h2 id="上午场"><a href="#上午场" class="headerlink" title="上午场"></a>上午场</h2><p>上午的面试，由于我面试的比较偏web岗，所以面试官问了一些常见的网络知识，我答得不是很好。</p>
+<h3 id="第一个问题"><a href="#第一个问题" class="headerlink" title="第一个问题"></a>第一个问题</h3><p><em>TCP与UDP的区别是什么，你觉得TCP有哪些优点，那些缺点？</em></p>
+<p>这个问题我没怎么讲清楚，回来后查阅了相关的资料，有了以下回答：</p>
 <ul>
-<li>method： 请求使用的方法，如<code>GET</code>、<code>POST</code></li>
-<li>headers：请求的头信息，形式为<code>Headers</code>对象或<code>ByteString</code></li>
-<li>body：请求的 body 信息：可能是一个 <code>Blob、BufferSource、FormData、URLSearchParams</code> 或者<code>USVString</code> 对象。注意 <code>GET</code> 或 <code>HEAD</code> 方法的请求不能包含 <code>body</code> 信息。</li>
-<li>mode: 请求的模式，如 <code>cors、 no-cors 或者 same-origin</code>。<blockquote>
-<p>关于<code>mode</code>，这里我一有点要详细说一下，在跨域处理的时候，一般情况下是使用<code>cors</code>，进行跨域请求，使用<code>cors</code>模式需要服务端与本地都进行了跨域请求的配置，但是有些时候，服务端并没有对跨域请求进行配置时，可以使用<code>no-cors</code>模式进行跨域请求，这种模式请求得到的数据只能进行读，不能直接进行处理和修改，同时这种模式不能<code>POST</code>数据到服务端。</p>
-</blockquote>
+<li>区别<ol>
+<li>TCP是面向连接的协议，它需要源端与终端建立连接，而UDP没有这种要求。</li>
+<li>TCP占用的系统资源要比UDP占用的系统资源多。</li>
+<li>UDP的程序结构较简单。</li>
+<li>TCP保证数据的正确性，UDP可能丢包；TCP保证数据的顺序，UDP不保证。</li>
+</ol>
 </li>
-<li>credentials: 请求的 <code>credentials</code>，如 <code>omit、same-origin</code> 或者 <code>include</code>。</li>
-<li>cache:  请求的 <code>cache</code> 模式: <code>default, no-store, reload, no-cache, force-cache, or only-if-cached</code></li>
-<li>redirect: 可用的 <code>redirect</code>模式:<code>follow</code> (自动重定向), <code>error</code> (如果产生重定向将自动终止并且抛出一个错误), 或者 <code>manual</code> (手动处理重定向). 在<code>Chrome</code>中，<code>Chrome 47</code>之前的默认值是 <code>follow</code>，从 <code>Chrome 47</code>开始是 <code>manual</code>。</li>
-<li>referrer: 一个 <code>USVString</code>可以是 <code>no-referrer、clien</code>t或一个 <code>URL</code>。默认是<code>client</code>。</li>
-<li>referrerPolicy: <code>Specifies the value of the referer HTTP header. May be one of no-referrer, no-referrer-when-downgrade, origin, origin-when-cross-origin, unsafe-url</code>.</li>
-<li>integrity:<code>Contains the subresource integrity value of the request</code>(e.g., sha256-BpfBw7ivV8q2jLiT13fxDYAe2tJllusRSZ273h2nFSE=).</li>
+<li>TCP的优缺点<ul>
+<li>优点：TCP发送的包有序号，对方收到包后要给一个反馈，如果超过一定时间还没收到反馈就自动执行超时重发，TCP最大的优点是可靠。</li>
+<li>缺点：很简单，就是麻烦，如果数据量比较小的话建立连接的过程反而占了大头，不断地重发也会造成网络延迟，因此比如视频聊天通常就使用UDP，因为丢失一些包也没关系，速度流畅才是重要的。</li>
 </ul>
-<h3 id="fetch的返回值与返回方法"><a href="#fetch的返回值与返回方法" class="headerlink" title="fetch的返回值与返回方法"></a>fetch的返回值与返回方法</h3><p>一个<code>Promise</code>， <code>rsolve</code> 回传<code>Respnose</code>对象。</p>
-<p><code>Response</code>有常见的三个属性</p>
+</li>
+</ul>
+<h3 id="第二个问题"><a href="#第二个问题" class="headerlink" title="第二个问题"></a>第二个问题</h3><p><em>每一个程序都有一个进程，而每个进程可能会有多个线程处理不同的工作，那么cpu时如何处理这多个线程的工作的呢？</em></p>
+<p>当时这个问题直接就是o((⊙﹏⊙))o状态完全没有答出来。<br>后来在回去的路上查了一下：</p>
 <ul>
-<li><code>Response.status</code> — 整数(默认值为200) 为<code>response</code>的状态码.</li>
-<li><code>Response.statusText</code> — 字符串(默认值为”OK”),该值与HTTP状态码消息对应.</li>
-<li><code>Response.ok</code> — 如上所示, 该属性是来检查<code>response</code>的状态是否在200-299(包括200,299)这个范围内.该属性返回一个<code>Boolean</code>值.</li>
+<li>每个进程都有至少一个线程，但多线程运行的应用，不同的功能同时运行，其实并不是真正的同时运行，CPU在管理这些线程的资源的时候，给每个线程分配了一段很短的运行时间段，然后不停的交替运行，因为切换速度很快，使用者很难察觉，所以就感觉多个线程同时运行了。</li>
+<li>那么有没有真正的完全并行的方法呢，其实是有的，<br>现代CPU有多个核心，多核心可以同时运行不同的线程和进程。</li>
 </ul>
-<p><code>Response</code>有以下几个方法</p>
+<h3 id="第三个问题"><a href="#第三个问题" class="headerlink" title="第三个问题"></a>第三个问题</h3><p><em>HTTP是运行在哪个层次的，列举常见的一些HTTP状态码及其含义</em></p>
 <ul>
-<li>arrayBuffer()</li>
-<li>blob()</li>
-<li>json()</li>
-<li>text()</li>
-<li>formData()</li>
+<li>HTTP是客户端浏览器或其他程序与web服务器之间的应用层通信协议。</li>
+<li>常见的状态码<ul>
+<li>1xx：信息<ul>
+<li>100：服务器接收到部分请求，一旦服务器没有拒绝该请求，客户端应该继续发送其余请求。</li>
 </ul>
-<p>这些方法会把相应的数据处理成js对象，更加方便。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>限于篇幅，我只写了<code>fetch</code>比较基础的几个方法与属性，更加详细的内容可以参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API" target="_blank" rel="external">MDN|Fetch API</a>。</p>
-<h3 id="参考文章与链接"><a href="#参考文章与链接" class="headerlink" title="参考文章与链接"></a>参考文章与链接</h3><p><a href="https://github.com/camsong/blog/issues/2" target="_blank" rel="external">传统 Ajax 已死，Fetch 永生</a></p>
-<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API" target="_blank" rel="external">MDN|Fetch API</a></p>
-<p><a href="https://www.npmjs.com/package/whatwg-fetch" target="_blank" rel="external">whatwg-fetch</a></p>
-<blockquote>
-<p>whatwg-fetch虽然只是一个fetch库，但是上面的fetch使用文档写的挺清晰的，值得参考与学习</p>
-</blockquote>
+</li>
+<li>2xx：成功<ul>
+<li>200：请求成功</li>
+<li>201： 请求被创建完成，同时新的资源被创建。</li>
+</ul>
+</li>
+<li>3xx：重定向<ul>
+<li>302： 所请求的页面已临时转移至新的URL</li>
+</ul>
+</li>
+<li>4xx：客户端错误<ul>
+<li>404：服务器无法找到被请求的页面</li>
+<li>400：服务器未能理解请求</li>
+<li>401：请求的页面需要用户名和密码</li>
+</ul>
+</li>
+<li>500：服务器错误<ul>
+<li>500： 请求未完成</li>
+<li>502： 请求未完成，服务器从上游服务器收到一个无效的响应</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>以上就是上午场我所遇到的一些问题，都是关于网络和操作系统的基础问题。</p>
+<h2 id="下午场"><a href="#下午场" class="headerlink" title="下午场"></a>下午场</h2><p>下午面试由于我面的比较偏c/c++的开发，所以问的更多是c++的语言特性和面向对象的开发思维，这一部分我比较熟悉，就只讲一个比较常见的问题吧。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><em>结构体和类他们的区别在哪里？</em></p>
+<p>c++中，类是可以在它的第一个访问说明符（public或private）之前定义类的成员，这些定义的成员的访问权限如何就看你类怎么定义的。使用struct，那么默认为public成员，而使用class，那么默认为private。</p>
+<p>所以我认为结构体更像是一种数据的存储集合方式，他的成员访问是对外公开的，而类更像是一种对象的抽象，他的成员访问时需要进行控制的。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>上午面试的更偏向于计算机体系这个大的体系中的基础知识，我很多都不是很清楚，需要后续中更多的投入精力吧，下午的面试则是语言的高级特性，程序设计的思维，这一块可能和面试的岗位有很大联系，不同的岗位对这一块的要求也都不尽相同。</p>
 
       
     </div>
@@ -415,9 +431,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
-            <a href="/tags/fetch/" rel="tag"># fetch</a>
+            <a href="/tags/计算机基础/" rel="tag"># 计算机基础</a>
           
         </div>
       
@@ -430,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/04/2017-04-11-DOM操作小结.html" rel="next" title="DOM操作小结">
-                <i class="fa fa-chevron-left"></i> DOM操作小结
+              <a href="/blog/2017/10/2017-10-18-计算机网络再学习(一）.html" rel="next" title="计算机网络再学习（一）">
+                <i class="fa fa-chevron-left"></i> 计算机网络再学习（一）
               </a>
             
           </div>
@@ -439,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2017/04/2017-04-20-网络安全实验.html" rel="prev" title="网络安全实验">
-                网络安全实验 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +624,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch概念"><span class="nav-number">2.</span> <span class="nav-text">fetch概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch原型"><span class="nav-number">3.</span> <span class="nav-text">fetch原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个简单的fetch实例"><span class="nav-number">4.</span> <span class="nav-text">一个简单的fetch实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch-的-option"><span class="nav-number">5.</span> <span class="nav-text">fetch 的 option</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fetch的返回值与返回方法"><span class="nav-number">6.</span> <span class="nav-text">fetch的返回值与返回方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考文章与链接"><span class="nav-number">8.</span> <span class="nav-text">参考文章与链接</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上午场"><span class="nav-number">2.</span> <span class="nav-text">上午场</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一个问题"><span class="nav-number">2.1.</span> <span class="nav-text">第一个问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二个问题"><span class="nav-number">2.2.</span> <span class="nav-text">第二个问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三个问题"><span class="nav-number">2.3.</span> <span class="nav-text">第三个问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下午场"><span class="nav-number">3.</span> <span class="nav-text">下午场</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">3.1.</span> <span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
