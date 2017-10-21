@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="计算机网络," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="引子今天在进行reacat的组件内部状态修改时，发现了一个关于js中的不变性所引发的常见错误，所以分析整理一下，留个提醒。">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="引子上次学习了1.1-1.4章节，回顾一下知识点，因特网的概念，分组交换与电路交换，协议的概念，分组交换的延时，丢包的理解。大概就是这些了，想一想之后开始新的容吧(✺ω✺)。">
+<meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Js的不变性">
-<meta property="og:url" content="http://www.moecai.com/blog/2017/05/2017-05-11-JS的不变性.html">
+<meta property="og:title" content="计算机网络在学习（二）">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/10/2017-10-21-计算机网络在学习（二）.html">
 <meta property="og:site_name" content="半见&#39;s blog">
-<meta property="og:description" content="引子今天在进行reacat的组件内部状态修改时，发现了一个关于js中的不变性所引发的常见错误，所以分析整理一下，留个提醒。">
+<meta property="og:description" content="引子上次学习了1.1-1.4章节，回顾一下知识点，因特网的概念，分组交换与电路交换，协议的概念，分组交换的延时，丢包的理解。大概就是这些了，想一想之后开始新的容吧(✺ω✺)。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-17T00:31:32.043Z">
+<meta property="og:updated_time" content="2017-10-21T01:34:47.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Js的不变性">
-<meta name="twitter:description" content="引子今天在进行reacat的组件内部状态修改时，发现了一个关于js中的不变性所引发的常见错误，所以分析整理一下，留个提醒。">
+<meta name="twitter:title" content="计算机网络在学习（二）">
+<meta name="twitter:description" content="引子上次学习了1.1-1.4章节，回顾一下知识点，因特网的概念，分组交换与电路交换，协议的概念，分组交换的延时，丢包的理解。大概就是这些了，想一想之后开始新的容吧(✺ω✺)。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.moecai.com/blog/2017/05/2017-05-11-JS的不变性.html"/>
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/10/2017-10-21-计算机网络在学习（二）.html"/>
 
 
 
 
 
-  <title>Js的不变性 | 半见's blog</title>
+  <title>计算机网络在学习（二） | 半见's blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/05/2017-05-11-JS的不变性.html">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/10/2017-10-21-计算机网络在学习（二）.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="bert_cai">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Js的不变性</h1>
+          <h1 class="post-title" itemprop="name headline">计算机网络在学习（二）</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-11T22:02:53+08:00">
-                2017-05-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-21T09:31:39+08:00">
+                2017-10-21
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
                   </a>
                 </span>
 
@@ -352,13 +352,58 @@
       
 
       
-        <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>今天在进行reacat的组件内部状态修改时，发现了一个关于js中的不变性所引发的常见错误，所以分析整理一下，留个提醒。</p>
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>上次学习了1.1-1.4章节，回顾一下知识点，因特网的概念，分组交换与电路交换，协议的概念，分组交换的延时，丢包的理解。大概就是这些了，想一想之后开始新的容吧(✺ω✺)。</p>
 <a id="more"></a>
-<h3 id="示例分析"><a href="#示例分析" class="headerlink" title="示例分析"></a>示例分析</h3><p>假设一个旅客公司的旅客组件有一个state值passengers，而我需要给这个passegers添加一个新乘客，写了如下示例代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">let</span> updateArray = <span class="keyword">this</span>.state.passengers;</div><div class="line">updateArray.push(<span class="string">'xxx, xxx.'</span>);</div><div class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">passengers</span>: upadateArray&#125;)</div></pre></td></tr></table></figure>
-<p>上面的这段代码的问题，你可能已经猜到了，由于在<code>JavaScript</code>中，对象和数组是以引用的方式传递的，所以在执行<code>let updateArray = this.state.passengers;</code>时，只是创建了一个新的引用，所以在调用push方法是就是直接的修改state属性，这样会导致state的混乱，正确的修改方式是使用非侵入式的方法，<code>map、filter、concat</code>都是这种形式的非侵入式方法，使用<code>concat</code>方法修改上述代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> updateArray = <span class="keyword">this</span>.state.passengers.concat(<span class="string">'xxx, xxx.'</span>);</div><div class="line"><span class="keyword">this</span>.setState(&#123;<span class="attr">passengers</span>: upadateArray&#125;)</div></pre></td></tr></table></figure></p>
-<p>这样就会创建一个全新的对象<code>updateArray</code>。</p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>只是一个简单的小记录，所以就到这了，还有更多的内容，后续会补充0.0。</p>
+<h2 id="协议层次及其服务模型"><a href="#协议层次及其服务模型" class="headerlink" title="协议层次及其服务模型"></a>协议层次及其服务模型</h2><p>分层的好处，使得由层次提供的服务易于改变，只要该层对其上层提供相同的服务，并且使用来自下层的相同服务，当某层的实现变化时，系统的其余部分基本保持不变。</p>
+<h3 id="分层的体系结构"><a href="#分层的体系结构" class="headerlink" title="分层的体系结构"></a>分层的体系结构</h3><ul>
+<li><p><strong>五层因特网协议</strong></p>
+<ul>
+<li><p><strong>应用层</strong>：网络应用及它们的应用层协议存留的地方。</p>
+</li>
+<li><p><strong>运输层</strong>（传输层）：因特网的运输层在应用应用程序端点之间传送应用层报文。</p>
+<ul>
+<li><p>TCP：面向连接的运输层协议，提供流量控制，将长报文划分为短报文，并提供拥塞控制机制。</p>
+</li>
+<li><p>UDP：提供无连接服务，不提供不必要服务的服务 ，没有可靠性，没有流量控制，也没有拥塞控制。</p>
+</li>
+</ul>
+</li>
+<li><strong>网络层</strong>：因特网的网络层负责将称为<strong>数据包</strong>的网络层分组从一台主机移动到另一台主机。运输层协议（如TCP、UDP）向网络层递交运输层报文段和目的地址。IP协议就属于网络层协议，还有一些路由选择协议也属于网络层</li>
+<li><strong>链路层</strong>（数据链路层）：网络层将数据报下传给链路层，链路层沿着路径将数据报传递给下一个节点。</li>
+<li><strong>物理层</strong>：实际的传输介质，相关物理设备等。</li>
+</ul>
+</li>
+<li><p><strong>OSI模型</strong></p>
+<ul>
+<li>应用层</li>
+<li><strong>表示层</strong>：使通信的应用程序能够解释交换数据的含义。</li>
+<li><strong>会话层</strong>：提供了数据交换定界和同步功能，包括建立检查点和恢复方案的方法。</li>
+<li>运输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+</li>
+</ul>
+<h2 id="面对攻击的网络"><a href="#面对攻击的网络" class="headerlink" title="面对攻击的网络"></a>面对攻击的网络</h2><h3 id="攻击者能够经因特网将有害程序放入你的计算机中"><a href="#攻击者能够经因特网将有害程序放入你的计算机中" class="headerlink" title="攻击者能够经因特网将有害程序放入你的计算机中"></a>攻击者能够经因特网将有害程序放入你的计算机中</h3><ul>
+<li><strong>病毒</strong>：一种需要某种形式的用户交互来感染用户设备的恶意软件或代码片段。如包含恶意可执行代码的电子邮件附件。</li>
+<li><strong>蠕虫</strong>：一种无需任何明显的用户交互就能计入设备的恶意软件或代码片段。</li>
+</ul>
+<h3 id="攻击者能够攻击服务器和网络基础设施"><a href="#攻击者能够攻击服务器和网络基础设施" class="headerlink" title="攻击者能够攻击服务器和网络基础设施"></a>攻击者能够攻击服务器和网络基础设施</h3><ul>
+<li><p>DOS（拒绝服务攻击）</p>
+<ul>
+<li><p>弱点攻击：像一台目标主机上运行的一首攻击的应用程序或操作系统发送制作精细的报文。</p>
+</li>
+<li><p>带宽洪范： 攻击者向目标发送大量分组，使得接入链路拥塞，合法分组无法到达服务器。</p>
+</li>
+<li>连接洪范：攻击者在目标主机中创建大量的半开或全开的TCP连接，使主机因为这些伪造的连接陷入困境，停止接收合法连接。</li>
+</ul>
+</li>
+</ul>
+<h3 id="攻击者嗅探分组"><a href="#攻击者嗅探分组" class="headerlink" title="攻击者嗅探分组"></a>攻击者嗅探分组</h3><p>就是我们常说的抓包，抓取我们在使用网络传输的各种信息，包括口令、个人信息和商业机密等。</p>
+<h3 id="攻击者伪造成信任的人"><a href="#攻击者伪造成信任的人" class="headerlink" title="攻击者伪造成信任的人"></a>攻击者伪造成信任的人</h3><p>就是IP欺骗，生成具有任意源地址、分组内容和目的地址的分组，然后将这个人工制作的分组传送到目标主机，伪造成为目标主机所信任的主机，后续会详细展开。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>由于因特网基于“一群相互信任的用户连接到一个透明的网络上”这一模型所设计的，所以因特网一开始就落入了这样一种不安全的境地。</p>
+<h2 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h2><p>其实后面还有一节内容，属于计算机网络史部分，看看书了解了解大佬们的生活就可以了(￣△￣；)应该可以有一些新的想法和期待吧，今天就到这里了，至此本书的第一大章就此结束！</p>
 
       
     </div>
@@ -376,7 +421,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
           
         </div>
       
@@ -389,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/2017/04/2017-04-20-网络安全实验.html" rel="next" title="网络安全实验">
-                <i class="fa fa-chevron-left"></i> 网络安全实验
+              <a href="/blog/2017/10/2017-10-20-10-19面试小结.html" rel="next" title="10-19面试小结">
+                <i class="fa fa-chevron-left"></i> 10-19面试小结
               </a>
             
           </div>
@@ -398,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2017/05/2017-05-25-关于Vue 计算属性的理解.html" rel="prev" title="关于Vue计算属性的理解">
-                关于Vue计算属性的理解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例分析"><span class="nav-number">2.</span> <span class="nav-text">示例分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#协议层次及其服务模型"><span class="nav-number">2.</span> <span class="nav-text">协议层次及其服务模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分层的体系结构"><span class="nav-number">2.1.</span> <span class="nav-text">分层的体系结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#面对攻击的网络"><span class="nav-number">3.</span> <span class="nav-text">面对攻击的网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击者能够经因特网将有害程序放入你的计算机中"><span class="nav-number">3.1.</span> <span class="nav-text">攻击者能够经因特网将有害程序放入你的计算机中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击者能够攻击服务器和网络基础设施"><span class="nav-number">3.2.</span> <span class="nav-text">攻击者能够攻击服务器和网络基础设施</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击者嗅探分组"><span class="nav-number">3.3.</span> <span class="nav-text">攻击者嗅探分组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#攻击者伪造成信任的人"><span class="nav-number">3.4.</span> <span class="nav-text">攻击者伪造成信任的人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">3.5.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结-1"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
