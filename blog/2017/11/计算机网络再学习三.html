@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引子离上一期计算机网络再学习已经有不止几天了，现在继续新的计算机网络再学习之旅(✺ω✺)。同时，前面两篇把整个计算机网络的体系大概过了一遍，从下面开始就是详细展开了，所用的书是自顶向下的叙述方式，所以现在就开始应用层的学习。">
+<meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络再学习三">
+<meta property="og:url" content="http://www.moecai.com/blog/2017/11/计算机网络再学习三.html">
+<meta property="og:site_name" content="半见&#39;s blog">
+<meta property="og:description" content="引子离上一期计算机网络再学习已经有不止几天了，现在继续新的计算机网络再学习之旅(✺ω✺)。同时，前面两篇把整个计算机网络的体系大概过了一遍，从下面开始就是详细展开了，所用的书是自顶向下的叙述方式，所以现在就开始应用层的学习。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-05T03:34:42.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机网络再学习三">
+<meta name="twitter:description" content="引子离上一期计算机网络再学习已经有不止几天了，现在继续新的计算机网络再学习之旅(✺ω✺)。同时，前面两篇把整个计算机网络的体系大概过了一遍，从下面开始就是详细展开了，所用的书是自顶向下的叙述方式，所以现在就开始应用层的学习。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.moecai.com/blog/2017/11/计算机网络再学习三.html"/>
+
+
+
+
+
+  <title>计算机网络再学习三 | 半见's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半见's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2017/11/计算机网络再学习三.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bert_cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半见's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机网络再学习三</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T11:32:02+08:00">
+                2017-11-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>离上一期计算机网络再学习已经有不止几天了，现在继续新的计算机网络再学习之旅(✺ω✺)。同时，前面两篇把整个计算机网络的体系大概过了一遍，从下面开始就是详细展开了，所用的书是自顶向下的叙述方式，所以现在就开始应用层的学习。</p>
+<a id="more"></a>
+<h2 id="应用层协议原理"><a href="#应用层协议原理" class="headerlink" title="应用层协议原理"></a>应用层协议原理</h2><h3 id="网络应用程序体系结构"><a href="#网络应用程序体系结构" class="headerlink" title="网络应用程序体系结构"></a>网络应用程序体系结构</h3><ul>
+<li>CS(clien-server)结构<ul>
+<li>有一个总是打开的主机称为<em>服务器</em>，他服务来自许多称为<em>客户</em>的主机的请求</li>
+<li>客户相互之间不通信</li>
+<li>服务器具有固定的、周知的地址</li>
+<li>常见的该体系应用FTP、电子邮件等</li>
+</ul>
+</li>
+<li>P2P结构<ul>
+<li>对服务器有最小的依赖</li>
+<li>应用程序在间断的主机对之间使用直接通信，这些主机对即称为<em>对等方</em></li>
+<li>主要用于下载、文件共享与视屏聊天等领域</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h3><ul>
+<li><p>客户与服务器进程</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">在给定的一对进程之间的通信会话场景中，发起通信的进程被标识为客户，在会话开始时等待联系的进程是服务器。</div></pre></td></tr></table></figure>
+</li>
+<li><p>进程与计算机网络的接口</p>
+<ul>
+<li>即socket</li>
+</ul>
+</li>
+<li>进程寻址<ul>
+<li>主机的地址（IP）</li>
+<li>定义在目的主机中的接受进程的标识符（PORT）</li>
+</ul>
+</li>
+</ul>
+<h3 id="可供应用程序使用的运输服务"><a href="#可供应用程序使用的运输服务" class="headerlink" title="可供应用程序使用的运输服务"></a>可供应用程序使用的运输服务</h3><p>运输层协议负责使报文进入接受端进程的socket，它需要提供四点服务</p>
+<ul>
+<li>可靠数据传输<ul>
+<li>某些容忍丢失的应用可能会接受部分数据丢失，如交谈式音视频</li>
+</ul>
+</li>
+<li>吞吐量<ul>
+<li>带宽敏感性应用对吞吐量要求很高</li>
+<li>弹性应用，如电子邮件、web传输等，能根据情况调整。</li>
+</ul>
+</li>
+<li>定时<ul>
+<li>通话和在线游戏</li>
+</ul>
+</li>
+<li>安全性</li>
+</ul>
+<h3 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h3><p>在因特网中有两个重要的运输层协议，它们是TCP和UDP</p>
+<ul>
+<li>TCP服务<ul>
+<li>面向连接服务<ul>
+<li>在应用层报文数据开始流动之前，TCP让客户和服务互相交换传输层控制信息，即握手过程。握手过程结束后，一个TCP连接就建立完成了，这个连接是全双工，即连接双方可以同时发送和接受信息。</li>
+</ul>
+</li>
+<li>可靠数据传送服务<ul>
+<li>通信进程能够依靠TCP，无差错、按适当顺序交付所有发送的数据，即它保证了数据的可靠性。</li>
+</ul>
+</li>
+<li>TCP提供了拥塞控制机制</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">关于安全性</div><div class="line"></div><div class="line">TCP和UDP都没有提供任何加密机制，这表示发送进程传输数据是没有经过任何加密处理的，传输过程中在任何中间链路被嗅探和发现都是很不安全的。对此业界提出了TCP的安全加强版即SSL，必须要指出的是SSL并不是与TCP和UDP在相同层次上的第三种因特网协议，而是对TCP的一种加强，这种强化是在应用层上体现的，在使用SSL时，应用程序的客户端与服务端需要使用对应的API。</div></pre></td></tr></table></figure>
+<ul>
+<li><p>UDP服务</p>
+<ul>
+<li>UDP是一种不提供不必要服务的轻量级传输协议，它提供最小服务。</li>
+<li>UDP是无连接的，两个进程通信间没有握手过程。</li>
+<li>UDP提供一种不可靠数据传输服务。</li>
+<li>UDP没有包括拥塞控制机制。</li>
+</ul>
+</li>
+<li><p>运输层协议没有提供的服务</p>
+<ul>
+<li>吞吐量</li>
+<li>定时（时延）</li>
+</ul>
+</li>
+</ul>
+<h3 id="应用层协议"><a href="#应用层协议" class="headerlink" title="应用层协议"></a>应用层协议</h3><p>应用层协议定义了运行在不同端系统上的应用程序如何相互传递报文，特别是应用层协议定义了：</p>
+<ul>
+<li>交换的报文类型，请求报文和响应报文</li>
+<li>各种报文类型的语法</li>
+<li>字段的语义</li>
+<li>一个进程何时以及如何发送报文，对报文进行响应的规则</li>
+</ul>
+<h2 id="Web和HTTP"><a href="#Web和HTTP" class="headerlink" title="Web和HTTP"></a>Web和HTTP</h2><h3 id="HTTP概况"><a href="#HTTP概况" class="headerlink" title="HTTP概况"></a>HTTP概况</h3><p>Web的应用层协议是超文本传输协议（HTTP），HTTP由两个程序实现：</p>
+<ul>
+<li>客户程序</li>
+<li>服务器程序</li>
+</ul>
+<p>这两个程序运行在不同的端系统中，通过交换HTTP报文进行会话。</p>
+<p>HTTP依赖于TCP的支撑，客户端向服务端发送一个HTTP请求，然后服务端回送一个HTTP响应。一个重要的部分，服务器向客户发送被请求的文件，但是并不存储客户的信息，所以即使客户在短短几秒之间进行两次请求同一个对象，服务器并不会因为刚刚为客户提供了该对象就不再做反应，而是重发对象。这就是HTTP<strong>无状态协议</strong>的体现部分。</p>
+<blockquote>
+<p>但是</p>
+<ul>
+<li>通过增加cookie和session机制，现在的网络请求其实是有状态的</li>
+<li>在没有状态的http协议下，服务器也一定会保留你每次网络请求对数据的修改，但这跟保留每次访问的数据是不一样的，保留的只是会话产生的结果，而没有保留会话</li>
+</ul>
+</blockquote>
+<h3 id="非连续连接和持续连接"><a href="#非连续连接和持续连接" class="headerlink" title="非连续连接和持续连接"></a>非连续连接和持续连接</h3><ul>
+<li>非连续连接<ul>
+<li>即每个请求响应对是进过一个单独的TCP连接发送</li>
+<li>缺点：需要建立和维护许多TCP连接，造成资源浪费</li>
+<li>缺点二：每一个对象经受两倍RTT的交付时延。</li>
+</ul>
+</li>
+<li>持续连接<ul>
+<li>所有请求即=及响应经相同的TCP连接发送</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h3><ul>
+<li>请求报文<ul>
+<li>请求行</li>
+<li>首部行</li>
+<li>空行</li>
+<li>实体</li>
+</ul>
+</li>
+<li>响应报文<ul>
+<li>状态行<ul>
+<li>状态码</li>
+<li>2xx OK</li>
+<li>3xx 对象转移</li>
+<li>4xx 请求不能被服务理解</li>
+<li>5xx 服务器报错</li>
+</ul>
+</li>
+<li>首部行</li>
+<li>实体</li>
+</ul>
+</li>
+</ul>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
+<li>响应报文首部</li>
+<li>请求报文首部</li>
+<li>用户端浏览器保留管理一个cookie文件</li>
+<li>web服务器后端数据库</li>
+</ul>
+<p>cookie标记了用户，当用户再次访问目标网站时，服务器通过数据库中的cookie找出对应的表项加载给用户，但是cookie也带来了一些安全问题，用户隐私等。</p>
+<h3 id="web缓存器"><a href="#web缓存器" class="headerlink" title="web缓存器"></a>web缓存器</h3><p>也称代理服务器，当客户端发送请求时，浏览器先建立一个到web缓存器的TCP连接，若缓存器类有对象副本，则直接返回该副本对象，若没有，则继续向初始服务器请求对象。</p>
+<ul>
+<li>好处<ul>
+<li>大大减少对客户请求的响应时间</li>
+<li>大大减低因特网上的web流量，改善应用性能</li>
+</ul>
+</li>
+</ul>
+<h2 id="文件传输协议：FTP"><a href="#文件传输协议：FTP" class="headerlink" title="文件传输协议：FTP"></a>文件传输协议：FTP</h2><p>FTP需要两条TCP连接</p>
+<ul>
+<li>一个是控制连接，用于传输两主机之间的控制信息，如用户标识、口令等。</li>
+<li>一个是数据连接，用于实际文件传输。</li>
+</ul>
+<h3 id="FTP常见命令"><a href="#FTP常见命令" class="headerlink" title="FTP常见命令"></a>FTP常见命令</h3><ul>
+<li>USER username： 向服务器传送用户标识</li>
+<li>PASS password：向服务器发送用户口令</li>
+<li>LIST： 列出文件</li>
+<li>RETR filename：用于从远程主机当前目录检索文件</li>
+<li>STOR filename: 用于在远程主机当前目录上存放文件</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>嗯，这一篇的周期有点长，期间发生了各种事情，工作也算是有了着落，断断续续看来一点，就先在这里断个点吧，下一篇估计会在2周内出，先给自己来个小deadline=￣ω￣=。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/11/关于JS弱类型的小思考.html" rel="next" title="关于JS弱类型的小思考">
+                <i class="fa fa-chevron-left"></i> 关于JS弱类型的小思考
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/12/计算机网络再学习四.html" rel="prev" title="计算机网络再学习四">
+                计算机网络再学习四 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg"
+                alt="bert_cai" />
+            
+              <p class="site-author-name" itemprop="name">bert_cai</p>
+              <p class="site-description motion-element" itemprop="description">web学习者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bertcai" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.stdioa.com/" title="StdioA" target="_blank">StdioA</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用层协议原理"><span class="nav-number">2.</span> <span class="nav-text">应用层协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络应用程序体系结构"><span class="nav-number">2.1.</span> <span class="nav-text">网络应用程序体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程通信"><span class="nav-number">2.2.</span> <span class="nav-text">进程通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可供应用程序使用的运输服务"><span class="nav-number">2.3.</span> <span class="nav-text">可供应用程序使用的运输服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#因特网提供的运输服务"><span class="nav-number">2.4.</span> <span class="nav-text">因特网提供的运输服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用层协议"><span class="nav-number">2.5.</span> <span class="nav-text">应用层协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web和HTTP"><span class="nav-number">3.</span> <span class="nav-text">Web和HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP概况"><span class="nav-number">3.1.</span> <span class="nav-text">HTTP概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非连续连接和持续连接"><span class="nav-number">3.2.</span> <span class="nav-text">非连续连接和持续连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP报文格式"><span class="nav-number">3.3.</span> <span class="nav-text">HTTP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cookie"><span class="nav-number">3.4.</span> <span class="nav-text">cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web缓存器"><span class="nav-number">3.5.</span> <span class="nav-text">web缓存器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件传输协议：FTP"><span class="nav-number">4.</span> <span class="nav-text">文件传输协议：FTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FTP常见命令"><span class="nav-number">4.1.</span> <span class="nav-text">FTP常见命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bert_cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
