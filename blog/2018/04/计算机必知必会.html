@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试,计算机基础," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="引子面试中会遇到很多基础知识，这些基础知识是作为一个计算机从业人员不能缺少的，大概分为计算机网络、操作系统以及算法，下面做个总结与分享。">
+<meta name="keywords" content="面试,计算机基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机必知必会（面试）">
+<meta property="og:url" content="http://www.moecai.com/blog/2018/04/计算机必知必会.html">
+<meta property="og:site_name" content="半见&#39;s blog">
+<meta property="og:description" content="引子面试中会遇到很多基础知识，这些基础知识是作为一个计算机从业人员不能缺少的，大概分为计算机网络、操作系统以及算法，下面做个总结与分享。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20170303135906042?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA1NDk4MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="https://img-blog.csdn.net/20170303135929683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA1NDk4MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-04-03T02:42:07.315Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机必知必会（面试）">
+<meta name="twitter:description" content="引子面试中会遇到很多基础知识，这些基础知识是作为一个计算机从业人员不能缺少的，大概分为计算机网络、操作系统以及算法，下面做个总结与分享。">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20170303135906042?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA1NDk4MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.moecai.com/blog/2018/04/计算机必知必会.html"/>
+
+
+
+
+
+  <title>计算机必知必会（面试） | 半见's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">半见's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.moecai.com/blog/2018/04/计算机必知必会.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bert_cai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="半见's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机必知必会（面试）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T10:41:12+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h2><p>面试中会遇到很多基础知识，这些基础知识是作为一个计算机从业人员不能缺少的，大概分为计算机网络、操作系统以及算法，下面做个总结与分享。<br><a id="more"></a></p>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><h3 id="TCP报文格式"><a href="#TCP报文格式" class="headerlink" title="TCP报文格式"></a>TCP报文格式</h3><p><img src="https://img-blog.csdn.net/20170303135906042?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA1NDk4MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="image"></p>
+<h3 id="UDP报文格式"><a href="#UDP报文格式" class="headerlink" title="UDP报文格式"></a>UDP报文格式</h3><p><img src="https://img-blog.csdn.net/20170303135929683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMzA1NDk4MzM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="image"></p>
+<h3 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h3><ul>
+<li>TCP<ul>
+<li>面向连接的服务<ul>
+<li>在应用层报文数据开始流动之前，TCP让客户和服务互相交换传输层控制信息，即握手过程。握手过程结束后，一个TCP连接就建立完成了，这个连接是全双工，即连接双方可以同时发送和接受信息。</li>
+</ul>
+</li>
+<li>可靠的数据传送服务<ul>
+<li>通信进程能够依靠TCP，无差错、按适当顺序交付所有发送的数据，即它保证了数据的可靠性。</li>
+</ul>
+</li>
+<li>提供了拥塞控制技术</li>
+</ul>
+</li>
+<li>UDP<ul>
+<li>UDP是一种不提供不必要服务的轻量级传输协议，它提供最小服务。</li>
+<li>UDP是无连接的，两个进程通信间没有握手过程。</li>
+<li>UDP提供一种不可靠数据传输服务。</li>
+<li>UDP没有包括拥塞控制机制。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h3><ul>
+<li>常见的状态码<ul>
+<li>1xx：信息<ul>
+<li>100：服务器接收到部分请求，一旦服务器没有拒绝该请求，客户端应该继续发送其余请求。</li>
+</ul>
+</li>
+<li>2xx：成功<ul>
+<li>200：请求成功</li>
+<li>201： 请求被创建完成，同时新的资源被创建。</li>
+</ul>
+</li>
+<li>3xx：重定向<ul>
+<li>302： 所请求的页面已临时转移至新的URL</li>
+</ul>
+</li>
+<li>4xx：客户端错误<ul>
+<li>404：服务器无法找到被请求的页面</li>
+<li>400：服务器未能理解请求</li>
+<li>401：请求的页面需要用户名和密码</li>
+</ul>
+</li>
+<li>500：服务器错误<ul>
+<li>500： 请求未完成</li>
+<li>502： 请求未完成，服务器从上游服务器收到一个无效的响应</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Session与Cookie"><a href="#Session与Cookie" class="headerlink" title="Session与Cookie"></a>Session与Cookie</h3><ul>
+<li>由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识具体的用户，这个机制就是Session.典型的场景比如购物车，当你点击下单按钮时，由于HTTP协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的Session，用用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。在服务端保存Session的方法很多，内存、数据库、文件都有。集群的时候也要考虑Session的转移，在大型的网站，一般会有专门的Session服务器集群，用来保存用户会话，这个时候 Session 信息都是放在内存的，使用一些缓存服务比如Memcached之类的来放 Session。</li>
+<li>思考一下服务端如何识别特定的客户？这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户。</li>
+<li>Cookie其实还可以用在一些方便用户的场景下，设想你某次登陆过一个网站，下次登录的时候不想再次输入账号了，怎么办？这个信息可以写到Cookie里面，访问网站的时候，网站页面的脚本可以读取这个信息，就自动帮你把用户名给填了，能够方便一下用户。这也是Cookie名称的由来，给用户的一点甜头。</li>
+<li>所以，总结一下：Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中；Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种方式。</li>
+</ul>
+<h3 id="TCP三次握手与四次挥手"><a href="#TCP三次握手与四次挥手" class="headerlink" title="TCP三次握手与四次挥手"></a>TCP三次握手与四次挥手</h3><ul>
+<li><p>三次握手</p>
+<ul>
+<li>第一次握手：建立连接时,客户端发送syn包(syn=j)到服务器,并进入SYN_SEND状态,等待服务器确认；<br>SYN：同步序列编号(Synchronize Sequence Numbers)</li>
+<li>第二次握手：服务器收到syn包,必须确认客户的SYN（ack=j+1）,同时自己也发送一个SYN包（syn=k）,即SYN+ACK包,此时服务器进入SYN_RECV状态； </li>
+<li>第三次握手：客户端收到服务器的SYN＋ACK包,向服务器发送确认包ACK(ack=k+1),此包发送完毕,客户端和服务器进入ESTABLISHED状态,完成三次握手.</li>
+</ul>
+</li>
+<li><p>四次挥手</p>
+<ul>
+<li>第一次挥手：Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态</li>
+<li>第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。</li>
+<li>第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。</li>
+<li>第四次挥手：Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。</li>
+</ul>
+</li>
+<li><p>为什么建立连接是三次握手，而断开连接是四次挥手</p>
+<ul>
+<li>这是因为服务端在LISTEN状态下，收到建立连接请求的SYN报文后，把ACK和SYN放在一个报文里发送给客户端。而关闭连接时，当收到对方的FIN报文时，仅仅表示对方不再发送数据了但是还能接收数据，己方也未必全部数据都发送给对方了，所以己方可以立即close，也可以发送一些数据给对方后，再发送FIN报文给对方来表示同意现在关闭连接，因此，己方ACK和FIN一般都会分开发送。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP与HTTPS的区别"><a href="#HTTP与HTTPS的区别" class="headerlink" title="HTTP与HTTPS的区别"></a>HTTP与HTTPS的区别</h3><ul>
+<li>端口<ul>
+<li>HTTP 80</li>
+<li>HTTPS 443</li>
+</ul>
+</li>
+<li>HTTP运行在TCP上</li>
+<li>HTTPS运行在SSL/TLS上，SSL/TLS运行在TCP上，所有的传输内容都经过加密</li>
+<li>HTTPS在传输数据的过程中建立了一条隧道，应用层先将数据传到TLS/SSL上，然后TLS/SSL将数据加密后再给到TCP进行传输。</li>
+</ul>
+<h3 id="IP地址子网划分"><a href="#IP地址子网划分" class="headerlink" title="IP地址子网划分"></a>IP地址子网划分</h3><ul>
+<li>A类IP段　1.0.0.0 到126.255.255.255 (0段和127段不使用)</li>
+<li>B类IP段　128.0.0.0 到191.255.255.255</li>
+<li>C类IP段　192.0.0.0 到223.255.255.255</li>
+</ul>
+<p><a href="https://baike.baidu.com/item/IP%E5%AD%90%E7%BD%91%E5%88%92%E5%88%86/7382494?fr=aladdin" target="_blank" rel="external">详解</a></p>
+<h3 id="POST和GET区别"><a href="#POST和GET区别" class="headerlink" title="POST和GET区别"></a>POST和GET区别</h3><ul>
+<li>POST和GET是HTTP协议中两种不同的方法</li>
+<li>POST向服务器传数据，GET从服务器获取数据</li>
+<li>GET是把参数数据队列加到提交表单的ACTION属性所指的URL中，值和表单内各个字段一一对应，在URL中可以看到。POST是通过HTTP post机制，将表单内各个字段与其内容放置在HTML HEADER内一起传送到ACTION属性所指的URL地址。用户看不到这个过程。</li>
+<li>GET传送的数据量较小，不能大于2KB，POST一般默认不受限制。</li>
+<li>GET安全性低，POST较高，但是GET执行效率更高。</li>
+<li>提交敏感信息建议使用POST</li>
+<li>做数据查询建议用GET，但是对数据进行修改时建议使用POST。</li>
+</ul>
+<h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p><a href="http://www.moecai.com/blog/2017/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%86%8D%E5%AD%A6%E4%B9%A0%E5%9B%9B.html#more">计算机网络再学习四</a></p>
+<h3 id="交换机与路由器的区别"><a href="#交换机与路由器的区别" class="headerlink" title="交换机与路由器的区别"></a>交换机与路由器的区别</h3><ul>
+<li>路由器可以给你的局域网自动分配IP，虚拟拨号，就像一个交通警察，指挥着你的电脑该往哪走，你自己不用操心那么多了。交换机只是用来分配网络数据的。</li>
+<li>路由器在网络层，路由器根据IP地址寻址，路由器可以处理TCP/IP协议，交换机不可以。交换机在中继层，交换机根据MAC地址寻址。</li>
+<li>路由器可以把一个IP分配给很多个主机使用，这些主机对外只表现出一个IP。交换机可以把很多主机连起来，这些主机对外各有各的IP。</li>
+<li>路由器提供防火墙的服务，交换机不能提供该功能。集线器、交换机都是做端口扩展的，就是扩大局域网(通常都是以太网)的接入点，也就是能让局域网可以连进来更多的电脑。 路由器是用来做网间连接，也就是用来连接不同的网络。</li>
+<li>路由器相当于邮局，把信投递到收件人地址，它的任务就完成了。但是信邮到了你们宿舍楼，而这个地址不是你一个人专享的，所以楼管王大爷还要负责把信给到你手里，他不会关心收件人地址，只看收件人姓名，然后打个内线电话叫你来取信。如果没有邮局，你没法向世界各地的漂亮妹子们发信，也没法从楼外的漂亮妹子那里收信。但是因为楼管王大爷的存在，你仍然可以通过他与同宿舍楼的好基友书信往来。所有邮局构成的系统，就是“广域网”，而你的宿舍楼，就是“局域网”，构建局域网是不需要路由器的。</li>
+</ul>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="内存页面置换算法"><a href="#内存页面置换算法" class="headerlink" title="内存页面置换算法"></a>内存页面置换算法</h3><ul>
+<li>FIFO（先进先出算法）<ul>
+<li>对于页面调度，每次发生缺页需要置换页面时，置换最先进入内存的页面。</li>
+</ul>
+</li>
+<li>LRU（最近最久未使用置换算法）<ul>
+<li>选择最近最长时间未访问过的页面予以淘汰，它认为过去一段时间内未访问过的页面，在最近的将来可能也不会被访问。</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h3><ul>
+<li>先来先服务算法（FCFS）<ul>
+<li>进程按照它们请求CPU的顺序使用CPU.就像你买东西去排队，谁第一个排，谁就先被执行，在它执行的过程中，不会中断它。当其他人也想进入内存被执行，就要排队等着，如果在执行过程中出现一些事，他现在不想排队了，下一个排队的就补上。此时如果他又想排队了，只能站到队尾去。 </li>
+<li>易于实现，只需一个队列</li>
+<li>不利于短进程，有利于CPU繁忙进程，不利于IO繁忙进程</li>
+</ul>
+</li>
+<li>最短作业优先（SJF，短进程优先）<ul>
+<li>是对FCFS的一种优化，目标是减少平均周转时间</li>
+<li>对预计执行时间短的进程优先分派处理机。通常后来的短进程不抢先正在执行的进程。 </li>
+<li>缩短进程等待时间，提高系统吞吐量</li>
+<li>对长进程非常不利，可能长时间得不到执行，且未能依据进程的紧迫程度来划分执行的优先级，以及难以准确估计进程的执行时间，从而影响调度性能。</li>
+</ul>
+</li>
+<li>最高响应比优先算法（HRRN）<ul>
+<li>FCFS方式只考虑每个作业的等待时间而未考虑执行时间的长短，而SJF方式只考虑执行时间而未考虑等待时间的长短。因此，这两种调度算法在某些极端情况下会带来某些不便。HRN调度策略同时考虑每个作业的等待时间长短和估计需要的执行时间长短，从中选出响应比最高的作业投入执行。这样，即使是长作业，随着它等待时间的增加，W / T也就随着增加，也就有机会获得调度执行。这种算法是介于FCFS和SJF之间的一种折中算法。 </li>
+<li>R =(W+T)/T = 1+W/T </li>
+<li>由于长作业也有机会投入运行，在同一时间内处理的作业数显然要少于SJF法，从而采用HRRN方式时其吞吐量将小于采用SJF 法时的吞吐量。 </li>
+<li>由于每次调度前要计算响应比，系统开销也要相应增加。</li>
+</ul>
+</li>
+<li><p>时间片轮转算法（RR）</p>
+<ul>
+<li>让就绪进程以FCFS 的方式按时间片轮流使用CPU 的调度方式，即将系统中所有的就绪进程按照FCFS 原则，排成一个队列，每次调度时将CPU 分派给队首进程，让其执行一个时间片，时间片的长度从几个ms 到几百ms。在一个时间片结束时，发生时钟中断，调度程序据此暂停当前进程的执行，将其送到就绪队列的末尾，并通过上下文切换执行当前的队首进程，进程可以未使用完一个时间片，就出让CPU（如阻塞）。 </li>
+<li>时间片轮转调度算法的特点是简单易行、平均响应时间短。 </li>
+<li>不利于处理紧急作业。在时间片轮转算法中，时间片的大小对系统性能的影响很大，因此时间片的大小应选择恰当 </li>
+</ul>
+</li>
+<li><p>多级反馈队列</p>
+<ul>
+<li>进程在进入待调度的队列等待时，首先进入优先级最高的Q1等待。 </li>
+<li>首先调度优先级高的队列中的进程。若高优先级中队列中已没有调度的进程，则调度次优先级队列中的进程。例如：Q1,Q2,Q3三个队列，只有在Q1中没有进程等待时才去调度Q2，同理，只有Q1,Q2都为空时才会去调度Q3。 </li>
+<li>对于同一个队列中的各个进程，按照时间片轮转法调度。比如Q1队列的时间片为N，那么Q1中的作业在经历了N个时间片后若还没有完成，则进入Q2队列等待，若Q2的时间片用完后作业还不能完成，一直进入下一级队列，直至完成。 </li>
+<li>在低优先级的队列中的进程在运行时，又有新到达的作业，那么在运行完这个时间片后，CPU马上分配给新到达的作业（抢占式）。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="进程间通信方式"><a href="#进程间通信方式" class="headerlink" title="进程间通信方式"></a>进程间通信方式</h3><ul>
+<li>管道<ul>
+<li>它是半双工的（即数据只能在一个方向上流动），具有固定的读端和写端。</li>
+<li>它只能用于具有亲缘关系的进程之间的通信（也是父子进程或者兄弟进程之间）。</li>
+</ul>
+</li>
+<li>消息队列<ul>
+<li>消息队列是面向记录的，其中的消息具有特定的格式以及特定的优先级。</li>
+<li>消息队列独立于发送与接收进程。进程终止时，消息队列及其内容并不会被删除。</li>
+<li>消息队列可以实现消息的随机查询,消息不一定要以先进先出的次序读取,也可以按消息的类型读取。</li>
+</ul>
+</li>
+<li>信号量<ul>
+<li>信号量用于实现进程间的互斥与同步，而不是用于存储进程间通信数据。</li>
+<li>信号量用于进程间同步，若要在进程间传递数据需要结合共享内存。</li>
+<li>信号量基于操作系统的 PV 操作，程序对信号量的操作都是原子操作。</li>
+<li>每次对信号量的 PV 操作不仅限于对信号量值加 1 或减 1，而且可以加减任意正整数。</li>
+</ul>
+</li>
+<li>共享存储<ul>
+<li>共享内存（Shared Memory），指两个或多个进程共享一个给定的存储区。</li>
+<li>共享内存是最快的一种 IPC，因为进程是直接对内存进行存取。</li>
+<li>因为多个进程可以同时操作，所以需要进行同步。</li>
+<li>信号量+共享内存通常结合在一起使用，信号量用来同步对共享内存的访问。</li>
+</ul>
+</li>
+</ul>
+<h3 id="进程与线程的区别"><a href="#进程与线程的区别" class="headerlink" title="进程与线程的区别"></a>进程与线程的区别</h3><ul>
+<li>进程是CPU资源分配的最小单位</li>
+<li>线程是CPU调度的最小单位</li>
+<li>线程作为进程的一部分，一个进程可以有多个线程</li>
+<li>这个概念更需要理解，推荐阅读《深入理解计算机系统》第13章</li>
+</ul>
+<h3 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h3><ul>
+<li>你吃饭吃到一半，电话来了，你一直到吃完了以后才去接，这就说明你不支持并发也不支持并行。</li>
+<li>你吃饭吃到一半，电话来了，你停了下来接了电话，接完后继续吃饭，这说明你支持并发。</li>
+<li>你吃饭吃到一半，电话来了，你一边打电话一边吃饭，这说明你支持并行。</li>
+<li>并发的关键是你有处理多个任务的能力，不一定要同时。</li>
+<li>并行的关键是你有同时处理多个任务的能力</li>
+</ul>
+<h2 id="算法部分"><a href="#算法部分" class="headerlink" title="算法部分"></a>算法部分</h2><p>这部分不好说，只能多多积累，《剑指offer》多多看多多学吧</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>实际上的基础内容还应该包括数据库相关，但是我对数据库的了解实在是乏善可陈，所以没有添加，但是数据库作为计算机几大基础内容之一，也是需要掌握的。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+            <a href="/tags/计算机基础/" rel="tag"># 计算机基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2018/03/剑指offer一.html" rel="next" title="剑指offer一">
+                <i class="fa fa-chevron-left"></i> 剑指offer一
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://ogdh4ds8u.bkt.clouddn.com/1cc43b0903a277413745141ef9bab721.jpeg"
+                alt="bert_cai" />
+            
+              <p class="site-author-name" itemprop="name">bert_cai</p>
+              <p class="site-description motion-element" itemprop="description">web学习者</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/bertcai" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.stdioa.com/" title="StdioA" target="_blank">StdioA</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机网络"><span class="nav-number">2.</span> <span class="nav-text">计算机网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP报文格式"><span class="nav-number">2.1.</span> <span class="nav-text">TCP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP报文格式"><span class="nav-number">2.2.</span> <span class="nav-text">UDP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP和UDP的区别"><span class="nav-number">2.3.</span> <span class="nav-text">TCP和UDP的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP状态码"><span class="nav-number">2.4.</span> <span class="nav-text">HTTP状态码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session与Cookie"><span class="nav-number">2.5.</span> <span class="nav-text">Session与Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP三次握手与四次挥手"><span class="nav-number">2.6.</span> <span class="nav-text">TCP三次握手与四次挥手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP与HTTPS的区别"><span class="nav-number">2.7.</span> <span class="nav-text">HTTP与HTTPS的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址子网划分"><span class="nav-number">2.8.</span> <span class="nav-text">IP地址子网划分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST和GET区别"><span class="nav-number">2.9.</span> <span class="nav-text">POST和GET区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS解析"><span class="nav-number">2.10.</span> <span class="nav-text">DNS解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机与路由器的区别"><span class="nav-number">2.11.</span> <span class="nav-text">交换机与路由器的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作系统"><span class="nav-number">3.</span> <span class="nav-text">操作系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存页面置换算法"><span class="nav-number">3.1.</span> <span class="nav-text">内存页面置换算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程调度算法"><span class="nav-number">3.2.</span> <span class="nav-text">进程调度算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程间通信方式"><span class="nav-number">3.3.</span> <span class="nav-text">进程间通信方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程与线程的区别"><span class="nav-number">3.4.</span> <span class="nav-text">进程与线程的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发与并行"><span class="nav-number">3.5.</span> <span class="nav-text">并发与并行</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法部分"><span class="nav-number">4.</span> <span class="nav-text">算法部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bert_cai</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
