@@ -354,49 +354,14 @@
 
       
         
-          
-            <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>开源成为了程序员圈子的一股潮流，但是很多嗯都不是很清楚各种开源协议的内容，以及各个开源协议的区别，所以这篇文章对开源协议做一些简单的介绍，帮助大家了解一些常见的开源协议的条款和适用范围。</p>
-<h2 id="Apache-v2-Licence"><a href="#Apache-v2-Licence" class="headerlink" title="Apache v2 Licence"></a>Apache v2 Licence</h2><ul>
-<li>需要给代码的用户一份Apache Licence</li>
-<li>如果修改了代码，需要在修改的文件汇总说明</li>
-<li>在衍生的代码中需要带有原来代码中的协议、商标。专利声明和其他原来作者规定需要包含的说明</li>
-<li>如果在发布的产品中添加Notice，则Notice文件中需要带有Apache Licence，可以增加自己的许可，但不可以对Apache Licence构成更改</li>
-</ul>
-<h2 id="MIT-Licence"><a href="#MIT-Licence" class="headerlink" title="MIT Licence"></a>MIT Licence</h2><p>MIT与BSD许可证相近，但是赋予被授予人更大的权力与更小的限制</p>
-<ul>
-<li>被授权人有权使用、复制、修改、合并、出版发行、散步、在授权、以及贩售软件的副本</li>
-<li>被授权人可以根据程序修改授权条款内容</li>
-<li>在软件和软件所有副本都必须包含版权声明和许可声明</li>
-<li>该授权可以在自由、开源或非自由软件使用</li>
-<li>可以与其他授权条款并存</li>
-</ul>
-<h2 id="GPL-v2"><a href="#GPL-v2" class="headerlink" title="GPL v2"></a>GPL v2</h2><p>GNU通用公共许可协议设计用于确保你享有分发自由软件的自由（你可以为此服务收费），确保你可以在需要的时候获得这些软件的源码，确保你可以修改这些软件或者在新的自由软件中复用其中某些片段，并且确保你在这方面享有知情权。</p>
-<p>自由权利包括复制、分发和修改。源码是指所有修改作品及生成、安装、运行（对可执行作品而言）目标码所需的源码，包括控制上述行为的脚本，但其中不包括系统库、通用工具。</p>
-<h2 id="GPL-v3"><a href="#GPL-v3" class="headerlink" title="GPL v3"></a>GPL v3</h2><p>与v2类似，区别在于不仅要求用户公布修改的源代码，还阻止了其他一些私有化方式，不得以任何新式阻止用户修改产品内的以GPL许可协议发布的软件。</p>
-<h2 id="Affero-GPL"><a href="#Affero-GPL" class="headerlink" title="Affero GPL"></a>Affero GPL</h2><p>相比GPL v3，加入额外条款，其目的是为了Copyleft条款应用于在网络上运行的应用程式（如Web应用），从而避免有人以应用服务提供商方式逃避GNU通用公众特许条款。</p>
-<h2 id="LGPL-v2-1"><a href="#LGPL-v2-1" class="headerlink" title="LGPL v2.1"></a>LGPL v2.1</h2><p>LGPL是GPL的一个为主要为类库使用者设计的开源协议，允许商业软件通过类库引用的方式使用LGPL类库而不用开源商业软件代码。</p>
-<p>如果修改LGPL的代码，则所有设计修改部分的额外代码都必须采用LGPL协议，所以LGPL适合作为第三方类库被商业采用，不适合以此为基础做二次商业开发。</p>
-<h2 id="LGPL-v3"><a href="#LGPL-v3" class="headerlink" title="LGPL v3"></a>LGPL v3</h2><p>与GPLv3类似，阻止了其他一些私有化方式，例如“锁定”，“安全启动”，不得以任何形式阻止用户修改产品内的以GPL许可证协议发布的软件。</p>
-<h2 id="Artistic-Licence-2-0"><a href="#Artistic-Licence-2-0" class="headerlink" title="Artistic Licence 2.0"></a>Artistic Licence 2.0</h2><p>通常指最初的艺术许可协议，是一个自由软件授权条款，一般用在官方发布的Perl解释器和大部分CPAN模块的授权。</p>
-<h2 id="BSD-2-Clause-Licence"><a href="#BSD-2-Clause-Licence" class="headerlink" title="BSD 2-Clause Licence"></a>BSD 2-Clause Licence</h2><p>允许用改制修改和重新发布代码，允许商业发布和销售。</p>
-<ul>
-<li>再发布产品中包含源代码，则源代码中必须带有原来代码中的BSD协议</li>
-<li>如果再发布的只是二进制类库/软件，则需要在类库/软件的文档和版权声明中包含原来代码中的BSD协议</li>
-</ul>
-<h2 id="BSD-3-Clause-Licence"><a href="#BSD-3-Clause-Licence" class="headerlink" title="BSD 3-Clause Licence"></a>BSD 3-Clause Licence</h2><p>相比二加入了一条</p>
-<ul>
-<li>不可以用开源代码的“作者/机构的名字”或“原来产品的名字”做市场推广</li>
-</ul>
-<h2 id="MPL"><a href="#MPL" class="headerlink" title="MPL"></a>MPL</h2><p>MPL与GPL，BSD类似，但是有如下几个不同：</p>
-<ul>
-<li>MPL可以通过在自己源代码库上加一个接口，除了接口程序的源代码以MPL许可证的形式对外许可，源代码库中的源代码就可以不用强制对外</li>
-<li>MPL允许被许可人将获得的源代码与自己的代码混合得到自己的软件程序</li>
-<li>MPL不反对软件专利，但是要求源代码作者不能提供已经受到专利保护的代码（除非本人是专利人，且书面向公众授权），也不能将这些源代码开源许可后再去申请相关专利。</li>
-<li>所有再发布者必须有一个专门的文件丢源代码修改的时间和修改方式有描述</li>
-</ul>
-<h2 id="Public-Domain"><a href="#Public-Domain" class="headerlink" title="Public Domain"></a>Public Domain</h2><p>人类的一部分作品和一部分知识的汇总，属于全人类公共文化遗产，任何人或组织不具有所有权益，任何人可以不受限制的使用和加工他们。创立版权制度的初衷是借由给予创作者一段时期的专有权利作为（经济）刺激以鼓励作者从事创作。当专有权利期间届止，作品便进入公有领域。公有领域的作品由于没有专属权利人，因此公众有权自由使用它们。</p>
-
-          
+          <h1 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h1><p>开源成为了程序员圈子的一股潮流，但是很多嗯都不是很清楚各种开源协议的内容，以及各个开源协议的区别，所以这篇文章对开源协议做一些简单的介绍，帮助大家了解一些常见的开源协议的条款和适用范围。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/blog/2018/11/开源许可证简单介绍.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
