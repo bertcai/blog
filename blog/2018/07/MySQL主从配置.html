@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="半见&#39;s blog">
 <meta property="og:description" content="引子最近由于要对Sharding-Sphere做一个学习与使用，所以对数据库的一些配置条件有了 需求，其中读写分离需要对数据库做主从配置，这篇文章就是对数据库的主从配置做一个记录。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-16T13:36:57.856Z">
+<meta property="og:updated_time" content="2018-08-01T06:20:32.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL主从配置">
 <meta name="twitter:description" content="引子最近由于要对Sharding-Sphere做一个学习与使用，所以对数据库的一些配置条件有了 需求，其中读写分离需要对数据库做主从配置，这篇文章就是对数据库的主从配置做一个记录。">
@@ -357,7 +357,7 @@
 <h2 id="主从配置"><a href="#主从配置" class="headerlink" title="主从配置"></a>主从配置</h2><p>主从配置一般使用一个数据库服务作为主库，多个从数据库服务作为从库，当我们对主库进行修改操作时，从库会同步主库的相关修改操作。本次主从配置由于是一个学习性的Demo，所以在Windows下同一主机的多个MySQL服务进行主从配置。</p>
 <h2 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h2><p>默认主、从数据库服务都已经安装完毕了，如果多个MySQL服务还未安装，可以参考<a href="https://blog.csdn.net/u013235478/article/details/50688133" target="_blank" rel="external">Windows上安装多个MySQL实例</a>。</p>
 <h3 id="主服务器配置"><a href="#主服务器配置" class="headerlink" title="主服务器配置"></a>主服务器配置</h3><p>首先，我们编辑my.ini文件，打开数据库的log-bin开关,同时做一些基础配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#Binary Logging</span></div><div class="line"><span class="built_in">log</span>-bin=mysql-bin</div><div class="line"><span class="comment">#Port</span></div><div class="line">port=3306</div><div class="line"><span class="comment"># Server Id</span></div><div class="line">server-id=1</div></pre></td></tr></table></figure></p>
-<p>这样，我们就能在data目录下看见二进制log文件。</p>
+<p>这样，我们就能在data目录下看见二进制log文件，<code>注意，每次修改ini配置文件后，必须重启mysql服务器，windows下重启服务可以通过打开任务管理器，选择服务选项卡，查找mysql服务进行重启</code>。</p>
 <p>然后，我们连入该数据库，创建一个新用户，同时给予这个用户从库权限，SQL语句如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 创建一个slave用户</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'slave'</span>@<span class="string">'127.0.0.1'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">WITH</span> mysql_native_password <span class="keyword">BY</span> <span class="string">'admin'</span>;</div><div class="line"># 给予slave用户权限</div><div class="line"><span class="keyword">GRANT</span> <span class="keyword">REPLICATION</span> <span class="keyword">SLAVE</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">'slave'</span>@<span class="string">'127.0.0.1'</span>;</div></pre></td></tr></table></figure>
 <p>然后，使用如下语句，查看bin-log文件，和当前库对应的log位置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mysql&gt; SHOW MASTER STATUS;</div><div class="line">+---------------+----------+--------------+------------------+-------------------+</div><div class="line">| File          | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</div><div class="line">+---------------+----------+--------------+------------------+-------------------+</div><div class="line">| binlog.000003 |    43857 |              |                  |                   |</div><div class="line">+---------------+----------+--------------+------------------+-------------------+</div><div class="line">1 row in set (0.00 sec)</div></pre></td></tr></table></figure></p>
@@ -413,6 +413,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2018/08/线程状态解析.html" rel="prev" title="线程状态解析">
+                线程状态解析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -493,7 +497,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -504,7 +508,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -515,7 +519,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -555,6 +559,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="http://showlinkroom.me" title="L1nk3d" target="_blank">L1nk3d</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.rexskz.info/" title="Rex Zeng" target="_blank">Rex Zeng</a>
                   </li>
                 
               </ul>
